@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WordPress on Li Kangwei</title>
+    <link>https://blog.pkulkw.me/tags/wordpress/</link>
+    <description>Recent content in WordPress on Li Kangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Feb 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub Pages &#43; Hugo：我的博客搭建之路</title>
+      <link>https://blog.pkulkw.me/p/myblog/</link>
+      <pubDate>Mon, 08 Feb 2021 09:00:00 +0800</pubDate>
+      
+      <guid>https://blog.pkulkw.me/p/myblog/</guid>
+      <description>很早就有自己购买域名搭建一个个人博客网站的想法了，而真正开始将这个想法付诸行动是源于 GitHub Student Developer Pack 的成功申请。
+申请 GitHub 学生开发包 GitHub 学生开发包内包含众多权益，比如 Termius 的 Premium 版、GitHub 的 Pro 版会员、name.com 以及 namecheap.com 提供的免费域名 + SSL 证书、DigitalOcean 提供的 50 刀代金券。权益实在太多了，大家可以对照官方网址逐一研究。
+ GitHub 学生开发包 
+有关 GitHub 学生包具体如何申请，网上相关的教程非常多也相对比较容易，在此简单的写一下申请流程：
+ 进入 GitHub 学生包 的官方页面； 点击「Get the Pack」按钮登录你的 GitHub 账号； 点击「Submit Your Information」提交信息进行申请，具体的填写可以参考下图（如果使用由学校提供的 edu 邮箱会加快审批速度）； 等待几天后收到邮件就可以享用 GitHub 学生开发包的所有权益。   GitHub 学生开发包申请示例 
+购买 DigitalOcean 云服务器 在 GitHub 学生包申请成功后我主要看了一下有关云服务器的权益，主要有 Microsoft Azure 的 100 刀额度、AWS 的 100 刀额度以及 DigitalOcean 的 50 刀额度。由于苦逼的我并没有信用卡，因此我最后选择了只需要绑定 Paypal 的 DigitalOcean。</description>
+    </item>
+    
+  </channel>
+</rss>

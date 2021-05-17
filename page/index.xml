@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Li Kangwei</title>
+    <link>https://blog.pkulkw.me/page/</link>
+    <description>Recent content in Pages on Li Kangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.pkulkw.me/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://blog.pkulkw.me/about/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.pkulkw.me/about/</guid>
+      <description>Me  Be Creative Keep Learning  我不明了我的全部天职，根本想不到应该怎么样和将要成为什么。在我的生命的每一时刻我确实知道的是，我应该做什么：我应该发展我的智慧，学得知识，以便扩展我的职责的范围。我处于极为明智和至善的世界之中，这个世界毫无误差地贯彻执行它的计划，我安于这种信念而享有幸福。
+Get In Touch  Email  nameless123@foxmail.com   Telegram  @lkw123   Twitter  @whoamamamiii   GitHub  @synthpop123    </description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://blog.pkulkw.me/archives/</link>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.pkulkw.me/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://blog.pkulkw.me/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.pkulkw.me/search/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
+下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
+聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
+此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。
+考虑栈操作，我们熟知的基本栈操作：
+ PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
+MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
+ 每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。'><title>算法学习笔记：摊还分析 Amortized Analysis</title>
+
+<link rel='canonical' href='https://blog.pkulkw.me/p/amortized-analysis/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='算法学习笔记：摊还分析 Amortized Analysis'>
+<meta property='og:description' content='摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
+下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
+聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
+此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。
+考虑栈操作，我们熟知的基本栈操作：
+ PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
+MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
+ 每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。'>
+<meta property='og:url' content='https://blog.pkulkw.me/p/amortized-analysis/'>
+<meta property='og:site_name' content='Li Kangwei'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Algorithm' /><meta property='article:tag' content='Math' /><meta property='article:published_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='og:image' content='https://blog.pkulkw.me/p/amortized-analysis/cover.jpg' />
+<meta name="twitter:site" content="@whoamamamiii">
+    <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="算法学习笔记：摊还分析 Amortized Analysis">
+<meta name="twitter:description" content="摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
+下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
+聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
+此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。
+考虑栈操作，我们熟知的基本栈操作：
+ PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
+MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
+ 每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.pkulkw.me/p/amortized-analysis/cover.jpg' />
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/flash_hudb04aa7998d4b20cb49baef48fe35d4c_2855_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🔥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://blog.pkulkw.me/">Li Kangwei</a></h1>
+        <h2 class="site-description">Think Different</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://blog.pkulkw.me/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/amortized-analysis/">
+                <img src="/p/amortized-analysis/cover_hud79b165c533af13046ef3b32c8f63d74_91995_800x0_resize_q75_box.jpg"
+                        srcset="/p/amortized-analysis/cover_hud79b165c533af13046ef3b32c8f63d74_91995_800x0_resize_q75_box.jpg 800w, /p/amortized-analysis/cover_hud79b165c533af13046ef3b32c8f63d74_91995_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post 算法学习笔记：摊还分析 Amortized Analysis" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/study/" >
+                Study
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/amortized-analysis/">算法学习笔记：摊还分析 Amortized Analysis</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 07, 2021</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，<strong>它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能</strong>。</p>
+<p>下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。</p>
+<h2 id="聚合分析-aggregate-analysis">聚合分析 Aggregate Analysis</h2>
+<h3 id="概念与定义">概念与定义</h3>
+<p>证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。</p>
+<p>此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。</p>
+<p>考虑栈操作，我们熟知的基本栈操作：</p>
+<ul>
+<li><code>PUSH(S, x)</code>：将对象 x 压入栈 S 中，时间 $O(1)$；</li>
+<li><code>POP(S)</code>：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。</li>
+</ul>
+<p>在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">MULTIPOP</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="mi">1</span>  <span class="k">while</span> <span class="ow">not</span> <span class="n">STACK</span><span class="o">-</span><span class="n">EMPTY</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="mi">2</span>     <span class="n">POP</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="mi">3</span>     <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></div><h3 id="基本分析">基本分析</h3>
+<p>问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？</p>
+<ul>
+<li>每个操作都可能是 MULTIPOP；</li>
+<li>每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$；</li>
+<li>总的运行时间的上界为 $O(n^2)$。</li>
+</ul>
+<p>虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。</p>
+<p>考察出现这种情况的原因，我们发现：<strong>这 3 种操作不是平行的，而是互相影响的</strong>。换言之，只有我们每次通过 PUSH 创造 “机会” 给 POP 和 MULTIPOP，POP 和MULTIPOP 才能 “消费” 这些机会，而不存在无限制的消费。</p>
+<h3 id="通过聚合分析确定摊还代价">通过聚合分析确定摊还代价</h3>
+<p>原理：<strong>将一个对象压入栈后，我们至多将其弹出一次</strong>。</p>
+<p>因此，对一个非空的栈，可以执行的 POP 操作的次数(包括了 MULTIPOP 中调用 POP 的次数)最多与 PUSH 操作的次数相当，即最多 n 次。</p>
+<p>对任意的 n 值，任意一个由 n 个 PUSH、POP 和 MULTIPOP 组成的操作序列，最多花费 $O(n)$ 时间。故一个操作的平均时间为 $O(n)/n=O(1)$。</p>
+<h2 id="核算法-accounting-method">核算法 Accounting Method</h2>
+<h3 id="概念与定义-1">概念与定义</h3>
+<p>对不同操作赋予不同费用，赋予某些操作的费用可能多于或少于其实际代价。</p>
+<p>我们将赋予一个操作的费用称为它的<strong>摊还代价</strong>。当一个操作的摊还代价超出其实际代价时，我们将差额存入数据结构中的特定对象，存入的差额称为<strong>信用</strong>。</p>
+<p>注意，数据结构中存储的信用永远为<strong>非负值</strong>。否则对于到此时为止的操作序列，总摊还代价不再是总实际代价的上界。</p>
+<h3 id="通过核算法确定摊还代价">通过核算法确定摊还代价</h3>
+<p>$$
+\begin{array}{|c|c|c|}
+\hline \text { 操作 } &amp; \text { 实际代价 } &amp; \text { 摊还代价 } \\ \hline \text { PUSH } &amp; \mathbf{1} &amp; \mathbf{2} \\ \hline \text { POP } &amp; \mathbf{1} &amp; \mathbf{0} \\ \hline \text { MULTIPOP } &amp; \min (\boldsymbol{k}, \boldsymbol{s}) &amp; \mathbf{0} \\ \hline
+\end{array}
+$$</p>
+<p>对 PUSH 操作赋予代价 2 元：<strong>1 元支付压栈操作的实际代价，剩余的 1 元存为信用</strong>。</p>
+<p>当执行一个 POP/MULTIPOP 操作时，不再多缴纳费用，而是从存储的信用取出 1 元/k 元来支付其实际代价。</p>
+<h2 id="势能法-potential-method">势能法 Potential Method</h2>
+<h3 id="概念与定义-2">概念与定义</h3>
+<p>并不将预付代价表示为数据结构中特定对象的信用，而是表示为 “势能”，或简称 “势”，<strong>将势能释放即可用来支付未来操作的代价</strong>。</p>
+<p>不需要管关心存储多少信用，而是只需要证明，每个操作积累的势能是常数的，别的操作只是消费势能就好了。</p>
+<p>势能法工作方式如下。我们将对一个初始数据结构 $D_{0}$ 执行 $n$ 个操作。对每个 $i=1,2, \cdots,n$，令 $c_{i}$ 为第 i 个操作的实际代价，令 $D_{i}$ 为在数据结构 $D_{i-1}$ 上执行第 i 个操作得到的结果数据结构。</p>
+<p><strong>势函数</strong> $\Phi$ 将每个数据结构 $D_{i}$ 映射到一个实数 $\Phi\left(D_{i}\right)$，此值即为关联到数据结构 $D_{i}$ 的势。</p>
+<p>第 i 个操作的<strong>摊还代价</strong> $\hat{c}_{i}$ 用势函数 $\Phi$ 定义为：</p>
+<p>$$ \hat c_{i}=c_{i}+\Phi(D_{i})- \Phi(D_{i-1}) $$</p>
+<p>因此，每个操作的摊还代价等于其实际代价加上此操作引起的势能变化。则 n 个操作的总摊还代价为</p>
+<p>$$
+\begin{aligned}
+\sum_{i=1}^{n} \widehat{c}_{i} &amp;=\sum_{i=1}^{n}\left(c_{i}+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)\right) \\ &amp;=\sum_{i=1}^{n} c_{i}+\Phi\left(D_{n}\right)-\Phi\left(D_{0}\right)
+\end{aligned}
+$$</p>
+<h3 id="通过势能法确定摊还代价">通过势能法确定摊还代价</h3>
+<p>将一个栈的势函数定义为其中的对象数量。</p>
+<ul>
+<li>对初始空栈 $D_0$，令 $\Phi(D_0)＝0$</li>
+<li>由于栈中对象数目非负，则有 $\Phi(D_i) \geqslant 0 = \Phi(D_0)$</li>
+</ul>
+<p>因此用 $\Phi$ 定义的 n 个操作的<strong>总摊还代价即为实际代价的一个上界</strong>。</p>
+<p>下面计算不同栈操作的摊还代价。如果第 i 个操作是 PUSH 操作，此时栈中包含 s 个对象，则势差为</p>
+<p>$$
+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)=(s+1)-s=1
+$$</p>
+<p>则由题意，PUSH 操作的摊还代价为</p>
+<p>$$
+\hat c_{i}=c_{i}+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)=1+1=2
+$$</p>
+<p>假设第 i 个操作是 <code>MULTIPOP(S, k)</code>，将 $k^{\prime}=\min (k, s)$ 个对象弹出栈。对象的实际代价为 $k^{\prime}$，势差为</p>
+<p>$$
+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)=-k^{\prime}
+$$</p>
+<p>因此，MULTIPOP 的摊还代价为</p>
+<p>$$
+\hat c_{i}=c_{i}+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)=k^{\prime}-k^{\prime}=0
+$$</p>
+<p>类似地，普通 $\mathrm{POP}$ 操作的推还代价也为 0。每个操作的摊还代价都是 $O(1)$，因此，n 个操作的总摊还代价为 $O(n)$。由于我们已经论证了 $\Phi\left(D_{i}\right) \geqslant \Phi\left(D_{0}\right)$，因此 n 个操作的总推还代价为总实际代价的上界，所以 n 个操作的最坏情况时间为 $O(n)$。</p>
+<h2 id="实例分析">实例分析</h2>
+<p>假定我们对一个数据结构执行一个由 n 个操作组成的序列，当 i 严格为 2 的幂时，第 i 个操作的代价为 i，否则代价为 1。</p>
+<h3 id="exercise-1-clrs-171-3">Exercise 1 (CLRS 17.1-3)</h3>
+<blockquote>
+<p>使用<strong>聚合分析</strong>确定每个操作的摊还代价。</p>
+</blockquote>
+<p><strong>Solution</strong>: Let $n$ be arbitrary, and have the cost of operation $i$ be $c(i)$. Then we have,</p>
+<p>$$
+\begin{aligned}
+\sum_{i = 1}^n c(i) &amp; = \sum_{i = 1}^{\left\lceil\lg n\right\rceil} 2^i + \sum_{i \leqslant n \text{ is not a power of } 2} 1 \\ &amp; \leqslant \sum_{i = 1}^{\left\lceil\lg n\right\rceil} 2^i + n \\ &amp; = 2^{1 + \left\lceil\lg n\right\rceil} - 1 + n \\ &amp; \leqslant 2n - 1 + n \\ &amp; \leqslant 3n \in O(n).
+\end{aligned}
+$$</p>
+<p>To find the average, we divide by $n$, and the amortized cost per operation is $O(1)$.</p>
+<h3 id="exercise-2-clrs-172-2">Exercise 2 (CLRS 17.2-2)</h3>
+<blockquote>
+<p>使用<strong>核算法</strong>确定每个操作的摊还代价。</p>
+</blockquote>
+<p><strong>Solution</strong>: Let $c_i =$ cost of $i\th$ operation.</p>
+<p>$$ c_i = \begin{cases} i &amp; \text{if $i$ is an exact power of $2$}, \\ 1 &amp; \text{otherwise}. \end{cases} $$</p>
+<p>Charge $3$ (amortized cost $\hat c_i$) for each operation.</p>
+<ul>
+<li>
+<p>If $i$ is not an exact power of 2, pay $1$, and store $2$ as credit.</p>
+</li>
+<li>
+<p>If $i$ is an exact power of 2, pay $i$, using stored credit.</p>
+</li>
+</ul>
+<p>$$
+\begin{array}{cccc} \text{Operation} &amp; \text{Cost} &amp; \text{Actual cost} &amp; \text{Credit remaining} \\ \hline 1 &amp; 3 &amp; 1 &amp; 2 \\ 2 &amp; 3 &amp; 2 &amp; 3 \\ 3 &amp; 3 &amp; 1 &amp; 5 \\ 4 &amp; 3 &amp; 4 &amp; 4 \\ 5 &amp; 3 &amp; 1 &amp; 6 \\ 6 &amp; 3 &amp; 1 &amp; 8 \\ 7 &amp; 3 &amp; 1 &amp; 10 \\ 8 &amp; 3 &amp; 8 &amp; 5 \\ 9 &amp; 3 &amp; 1 &amp; 7 \\ 10 &amp; 3 &amp; 1 &amp; 9 \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots \end{array}
+$$</p>
+<p>Since the amortized cost is $3$ per operation, $\sum\limits_{i = 1}^n \hat c_i = 3n$.</p>
+<p>We know from Exercise 1 that $\sum\limits_{i = 1}^n \hat c_i &lt; 3n$.</p>
+<p>Then we have</p>
+<p>$$\sum_{i = 1}^n \hat c_i \geqslant \sum_{i = 1}^n c_i \Rightarrow \text{credit} = \text{amortized cost} - \text{actual cost} \geqslant 0.$$</p>
+<p>Since the amortized cost of each operation is $O(1)$, and the amount of credit never goes negative, the total cost of $n$ operations is $O(n)$.</p>
+<h3 id="exercise-3-clrs-173-2">Exercise 3 (CLRS 17.3-2)</h3>
+<blockquote>
+<p>使用<strong>势能法</strong>确定每个操作的摊还代价。</p>
+</blockquote>
+<p><strong>Solution</strong>: Define the potential function $\Phi(D_0) = 0$, and $\Phi(D_i) = 2i - 2^{1 + \lfloor \lg i \rfloor}$ for $i &gt; 0$. For operation 1,</p>
+<p>$$\begin{aligned}\hat c_i &amp;= c_i + \Phi(D_i) - \Phi(D_{i - 1}) \\ &amp;= 1 + 2i - 2^{1+ \lfloor \lg i \rfloor} - 0 \\ &amp;= 1.\end{aligned}$$</p>
+<p>For operation $i(i &gt; 1)$, if $i$ is not a power of 2, then</p>
+<p>$$
+\begin{aligned}
+\hat c_i &amp;= c_i + \Phi(D_i) - \Phi(D_{i - 1}) \\ &amp;= 1 + 2i - 2^{1 + \lfloor \lg 1 \rfloor} - (2(i - 1) - 2^{1 + \lfloor \lg(i - 1) \rfloor})\\ &amp;= 3.
+\end{aligned}
+$$</p>
+<p>If $i = 2^j$ for some $j \in \mathbb N$, then</p>
+<p>$$
+\begin{aligned}
+\hat c_i &amp;= c_i + \Phi(D_i) - \Phi(D_{i - 1}) \\ &amp; = i + 2i - 2^{1 + j}-(2(i - 1) - 2^{1 + j - 1}) \\ &amp;= i + 2i - 2i - 2i + 2 + i \\ &amp;= 2.
+\end{aligned}
+$$</p>
+<p>Thus, the amortized cost is 3 per operation.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/algorithm/">Algorithm</a>
+        
+            <a href="/tags/math/">Math</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/knuth-paper/">
+        
+        
+            <div class="article-image">
+                <img src="/p/knuth-paper/cover.8849c185e164543ebfbcba7d1b8aad45_hub2f932e25186e68838833575419907d2_130609_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="knuth-paper" 
+                        data-hash="md5-iEnBheFkVD6/vLp9G4qtRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文笔记：Mathematical Analysis of Algorithms</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Li Kangwei
+    </section>
+    
+    <section class="powerby">
+        Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script id="ribbon" src="https://cdn.jsdelivr.net/gh/zproo/canvas-ribbon@master/js/canvas_ribbon.min.js"></script>
+    </body>
+</html>
