@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Fri, 21 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>论文笔记：PRIMES is in P</title>
-        <link>https://blog.pkulkw.me/p/piip/</link>
+        <title>论文笔记：PRIMES is in P (The AKS primality test)</title>
+        <link>https://blog.pkulkw.me/p/primes-is-in-p/</link>
         <pubDate>Fri, 21 May 2021 09:00:00 +0800</pubDate>
         
-        <guid>https://blog.pkulkw.me/p/piip/</guid>
-        <description>&lt;img src="https://blog.pkulkw.me/p/piip/cover.jpg" alt="Featured image of post 论文笔记：PRIMES is in P" /&gt;&lt;blockquote&gt;
+        <guid>https://blog.pkulkw.me/p/primes-is-in-p/</guid>
+        <description>&lt;img src="https://blog.pkulkw.me/p/primes-is-in-p/cover.jpg" alt="Featured image of post 论文笔记：PRIMES is in P (The AKS primality test)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;https://www.jstor.org/stable/3597229&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PRIMES is in P&lt;/a&gt;&amp;rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 &lt;strong&gt;AKS 素性测试算法&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
