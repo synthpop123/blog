@@ -6,7 +6,18 @@
     <description>Recent content in Math on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 07 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>论文笔记：PRIMES is in P</title>
+      <link>https://blog.pkulkw.me/p/piip/</link>
+      <pubDate>Fri, 21 May 2021 09:00:00 +0800</pubDate>
+      
+      <guid>https://blog.pkulkw.me/p/piip/</guid>
+      <description> &amp;ldquo;PRIMES is in P&amp;rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 AKS 素性测试算法。
+ 值得注意的是，该算法是第一个被发表的一般的、多项式的、确定性的、无仰赖的素数判定算法，也正因如此，其重要性不言而喻。
+ 一般的：相比于一些高速判定算法只适用于满足特定条件的素数，AKS 算法可以用于检测任何给定数字是否为素数； 多项式的：AKS 算法的最长运行时间可以被表示为一个目标数字长度的多项式； 确定性的：AKS 算法可以确定性地判断给定数字是否为素数； 无仰赖的：AKS 算法并未仰赖于任何未证明猜想。  介绍与引入 </description>
+    </item>
+    
     <item>
       <title>算法学习笔记：摊还分析 Amortized Analysis</title>
       <link>https://blog.pkulkw.me/p/amortized-analysis/</link>

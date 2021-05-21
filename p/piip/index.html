@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Me  Be Creative Keep Learning  Get In Touch  Email  nameless123@foxmail.com   Telegram  @lkw123   Twitter  @whoamamamiii   GitHub  @synthpop123    '><title>About</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' &amp;ldquo;PRIMES is in P&amp;rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 AKS 素性测试算法。
+ 值得注意的是，该算法是第一个被发表的一般的、多项式的、确定性的、无仰赖的素数判定算法，也正因如此，其重要性不言而喻。
+ 一般的：相比于一些高速判定算法只适用于满足特定条件的素数，AKS 算法可以用于检测任何给定数字是否为素数； 多项式的：AKS 算法的最长运行时间可以被表示为一个目标数字长度的多项式； 确定性的：AKS 算法可以确定性地判断给定数字是否为素数； 无仰赖的：AKS 算法并未仰赖于任何未证明猜想。  介绍与引入 '><title>论文笔记：PRIMES is in P</title>
 
-<link rel='canonical' href='https://blog.pkulkw.me/about/'>
+<link rel='canonical' href='https://blog.pkulkw.me/p/piip/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='About'>
-<meta property='og:description' content='Me  Be Creative Keep Learning  Get In Touch  Email  nameless123@foxmail.com   Telegram  @lkw123   Twitter  @whoamamamiii   GitHub  @synthpop123    '>
-<meta property='og:url' content='https://blog.pkulkw.me/about/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='论文笔记：PRIMES is in P'>
+<meta property='og:description' content=' &amp;ldquo;PRIMES is in P&amp;rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 AKS 素性测试算法。
+ 值得注意的是，该算法是第一个被发表的一般的、多项式的、确定性的、无仰赖的素数判定算法，也正因如此，其重要性不言而喻。
+ 一般的：相比于一些高速判定算法只适用于满足特定条件的素数，AKS 算法可以用于检测任何给定数字是否为素数； 多项式的：AKS 算法的最长运行时间可以被表示为一个目标数字长度的多项式； 确定性的：AKS 算法可以确定性地判断给定数字是否为素数； 无仰赖的：AKS 算法并未仰赖于任何未证明猜想。  介绍与引入 '>
+<meta property='og:url' content='https://blog.pkulkw.me/p/piip/'>
 <meta property='og:site_name' content='Li Kangwei'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2021-02-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-02-08T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Paper' /><meta property='article:tag' content='Math' /><meta property='article:tag' content='Algorithm' /><meta property='article:published_time' content='2021-05-21T09:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-05-21T09:00:00&#43;08:00'/><meta property='og:image' content='https://blog.pkulkw.me/p/piip/cover.jpg' />
 <meta name="twitter:site" content="@whoamamamiii">
-    <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="About">
-<meta name="twitter:description" content="Me  Be Creative Keep Learning  Get In Touch  Email  nameless123@foxmail.com   Telegram  @lkw123   Twitter  @whoamamamiii   GitHub  @synthpop123    ">
+    <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="论文笔记：PRIMES is in P">
+<meta name="twitter:description" content=" &amp;ldquo;PRIMES is in P&amp;rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 AKS 素性测试算法。
+ 值得注意的是，该算法是第一个被发表的一般的、多项式的、确定性的、无仰赖的素数判定算法，也正因如此，其重要性不言而喻。
+ 一般的：相比于一些高速判定算法只适用于满足特定条件的素数，AKS 算法可以用于检测任何给定数字是否为素数； 多项式的：AKS 算法的最长运行时间可以被表示为一个目标数字长度的多项式； 确定性的：AKS 算法可以确定性地判断给定数字是否为素数； 无仰赖的：AKS 算法并未仰赖于任何未证明猜想。  介绍与引入 "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.pkulkw.me/p/piip/cover.jpg' />
     </head>
-    <body class="article-page keep-sidebar">
+    <body class="">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -36,7 +43,7 @@
             document.body.dataset.scheme = 'light';
         }
     })();
-</script><div class="container main-container flex on-phone--column extended ">
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
             <aside class="sidebar left-sidebar sticky">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
         <span class="hamburger-box">
@@ -109,7 +116,7 @@
         
         
 
-        <li  class='current' >
+        <li >
             <a href='/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -188,14 +195,47 @@
 </aside>
 
             <main class="main full-width">
-    <article class="main-article">
+    <div id="article-toolbar">
+        <a href="https://blog.pkulkw.me/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/piip/">
+                <img src="/p/piip/cover_hu6fd09cfaab4ba63cc07ef2396a34292f_384797_800x0_resize_q75_box.jpg"
+                        srcset="/p/piip/cover_hu6fd09cfaab4ba63cc07ef2396a34292f_384797_800x0_resize_q75_box.jpg 800w, /p/piip/cover_hu6fd09cfaab4ba63cc07ef2396a34292f_384797_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="600" 
+                        loading="lazy"
+                        alt="Featured image of post 论文笔记：PRIMES is in P" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/study/" >
+                Study
+            </a>
+        
+    </header>
+    
 
     <h2 class="article-title">
-        <a href="/about/">About</a>
+        <a href="/p/piip/">论文笔记：PRIMES is in P</a>
     </h2>
 
     <footer class="article-time">
@@ -207,48 +247,39 @@
 
 
 
-        <time class="article-time--published">Feb 08, 2021</time>
+        <time class="article-time--published">May 21, 2021</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="me">Me</h2>
+    <blockquote>
+<p>&ldquo;<a class="link" href="https://www.jstor.org/stable/3597229"  target="_blank" rel="noopener"
+    >PRIMES is in P</a>&rdquo; 由三位来自印度坎普尔理工学院的研究者 Manindra Agrawal、Neeraj Kayal 和 Nitin Saxena 于 2002 年发表，提出了 <strong>AKS 素性测试算法</strong>。</p>
+</blockquote>
+<p>值得注意的是，该算法是第一个被发表的<strong>一般的</strong>、<strong>多项式的</strong>、<strong>确定性的</strong>、<strong>无仰赖的</strong>素数判定算法，也正因如此，其重要性不言而喻。</p>
 <ul>
-<li>Be Creative</li>
-<li>Keep Learning</li>
+<li><strong>一般的</strong>：相比于一些高速判定算法只适用于满足特定条件的素数，AKS 算法可以用于检测任何给定数字是否为素数；</li>
+<li><strong>多项式的</strong>：AKS 算法的最长运行时间可以被表示为一个目标数字长度的多项式；</li>
+<li><strong>确定性的</strong>：AKS 算法可以确定性地判断给定数字是否为素数；</li>
+<li><strong>无仰赖的</strong>：AKS 算法并未仰赖于任何未证明猜想。</li>
 </ul>
-<h2 id="get-in-touch">Get In Touch</h2>
-<ul>
-<li>Email
-<ul>
-<li><a class="link" href="mailto:nameless123@foxmail.com" >nameless123@foxmail.com</a></li>
-</ul>
-</li>
-<li>Telegram
-<ul>
-<li><a class="link" href="https://t.me/lkw123"  target="_blank" rel="noopener"
-    >@lkw123</a></li>
-</ul>
-</li>
-<li>Twitter
-<ul>
-<li><a class="link" href="https://twitter.com/whoamamamiii"  target="_blank" rel="noopener"
-    >@whoamamamiii</a></li>
-</ul>
-</li>
-<li>GitHub
-<ul>
-<li><a class="link" href="https://github.com/synthpop123"  target="_blank" rel="noopener"
-    >@synthpop123</a></li>
-</ul>
-</li>
-</ul>
+<h2 id="介绍与引入">介绍与引入</h2>
 
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/paper/">Paper</a>
+        
+            <a href="/tags/math/">Math</a>
+        
+            <a href="/tags/algorithm/">Algorithm</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -260,14 +291,94 @@
 
 
 
-        <span>LICENSED UNDER CC BY-NC-SA 4.0</span>
+        <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
     </footer>
 
     
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
 </article>
 
-     
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/knuth-paper/">
+        
+        
+            <div class="article-image">
+                <img src="/p/knuth-paper/cover.8849c185e164543ebfbcba7d1b8aad45_hub2f932e25186e68838833575419907d2_130609_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="knuth-paper" 
+                        data-hash="md5-iEnBheFkVD6/vLp9G4qtRQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文笔记：Mathematical Analysis of Algorithms</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/amortized-analysis/">
+        
+        
+            <div class="article-image">
+                <img src="/p/amortized-analysis/cover.b6ce1e7e02a318ba0fcc8aa4a3f20bf7_hud79b165c533af13046ef3b32c8f63d74_91995_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="amortized-analysis" 
+                        data-hash="md5-ts4efgKjGLoPzIqko/IL9w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">算法学习笔记：摊还分析 Amortized Analysis</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
         
     
 
@@ -283,8 +394,6 @@
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
 </footer>
-
-    
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     
@@ -361,7 +470,6 @@
                 rel="stylesheet" 
                 href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
             >
-
             </main>
         </div>
         <script 
