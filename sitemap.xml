@@ -32,9 +32,6 @@
     <loc>https://blog.pkulkw.me/p/knuth-paper/</loc>
     <lastmod>2021-03-18T09:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://blog.pkulkw.me/categories/blog/</loc>
-    <lastmod>2021-02-08T09:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://blog.pkulkw.me/tags/github/</loc>
     <lastmod>2021-02-08T09:00:00+08:00</lastmod>
   </url><url>
@@ -42,6 +39,9 @@
     <lastmod>2021-02-08T09:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/hugo/</loc>
+    <lastmod>2021-02-08T09:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/categories/tech/</loc>
     <lastmod>2021-02-08T09:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/wordpress/</loc>
