@@ -24,7 +24,7 @@
 &lt;li&gt;&lt;code&gt;POP(S)&lt;/code&gt;：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;MULTIPOP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;MULTIPOP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;STACK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EMPTY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
 &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;POP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
@@ -230,7 +230,7 @@ p(1)&amp;amp;=8, p(8)=4, p(4)=1 \\ p(2)&amp;amp;=2 \\ p(3)&amp;amp;=7, p(7)=3 \\
 \end{cases}
 $$&lt;/p&gt;
 &lt;p&gt;我们定义某一环中最小的值为这个环的头元素，那么每当我们发现了一个环的头元素 $k$，我们便将 $x_{p(k)}$ 的值填入 $x_k$ 处，将 $x_{p(p(k))}$ 的值填入 $x_{p(k)}$ 处&amp;hellip;&amp;hellip;最终将 $x_k$ 填入环的尾元素对应的位置即可。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;
    &lt;span class=&#34;c1&#34;&gt;# 从 p(j) 开始遍历这个环&lt;/span&gt;
    &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
    &lt;span class=&#34;c1&#34;&gt;# 如果 j 不是环的头元素，那么就会存在一个环上点 k &amp;lt; j&lt;/span&gt;
@@ -359,7 +359,7 @@ $$&lt;/p&gt;
 &lt;p&gt;对于这种问题，一个时间复杂度为 $O(n\log n)$ 的排序算法便可以解决，因此，我们需要考虑的是有没有时间复杂度低于 $O(n\log n)$ 的算法。&lt;/p&gt;
 &lt;p&gt;回忆我们已了解的算法以及刚学过的分治策略，根据快速排序的启发，我们可以采取如下思路：&lt;/p&gt;
 &lt;p&gt;对于数组 $a_i,\cdots,a_j$，首先调用 &lt;code&gt;Partition()&lt;/code&gt; 方法对 $a_i$ 的位置进行移动，记移动后的位置为 k，使它左边元素都比其小、右边元素都比其大。此时我们根据 k 和 t 的大小关系，就可以分别讨论接下来的搜索是在 k 的左侧还是右侧进行，抑或是此时 k 位置的元素正好是第 k 大的元素。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;FindtthNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;FindtthNumber&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
    &lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
    &lt;span class=&#34;c1&#34;&gt;# Partition()的实现参考快速排序的相关原理&lt;/span&gt;
    &lt;span class=&#34;c1&#34;&gt;# Partition()返回的是分割后的数组下标&lt;/span&gt;
@@ -448,7 +448,7 @@ $$&lt;/p&gt;
     &gt;DigitalOcean&lt;/a&gt; 提供的 50 刀代金券。权益实在太多了，大家可以对照官方网址逐一研究。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 236; flex-basis: 566px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/add.png&#34; data-size=&#34;1249x529&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/add.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/add_hu21b9583fa1f8b66537b4cc29153a8565_74106_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/add_hu21b9583fa1f8b66537b4cc29153a8565_74106_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/add_hu21b9583fa1f8b66537b4cc29153a8565_74106_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/add_hu21b9583fa1f8b66537b4cc29153a8565_74106_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;1249&#34;
 				height=&#34;529&#34;
 				loading=&#34;lazy&#34;
@@ -492,7 +492,7 @@ $$&lt;/p&gt;
 &lt;p&gt;在选择了合适的域名之后我们在网站的后台便可以管理 DNS 记录，申请开通 SSL certificate 以进行网站的下一步搭建了。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 174; flex-basis: 418px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_2.png&#34; data-size=&#34;1448x830&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_2.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_2_hu705160a38f94686797db034772d92a3a_18675_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_2_hu705160a38f94686797db034772d92a3a_18675_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_2_hu705160a38f94686797db034772d92a3a_18675_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_2_hu705160a38f94686797db034772d92a3a_18675_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;1448&#34;
 				height=&#34;830&#34;
 				loading=&#34;lazy&#34;
@@ -516,7 +516,7 @@ $$&lt;/p&gt;
 &lt;p&gt;而既然选择了 GitHub Pages，相应的可以选择 &lt;strong&gt;Hugo、Hexo、jekyll&lt;/strong&gt; 等静态网站生成器加以实现。由于对 Hugo 的一款主题十分钟情，我便毫不犹豫地选择了 Hugo，同时，Hugo 号称是世界上生成网站最快的 framwork 倒也是蛮不错的了。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 243; flex-basis: 584px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_3.png&#34; data-size=&#34;1392x572&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_3.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_3_huaff2b61b5d9574bb5040c7f454cc9030_16664_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_3_huaff2b61b5d9574bb5040c7f454cc9030_16664_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_3_huaff2b61b5d9574bb5040c7f454cc9030_16664_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_3_huaff2b61b5d9574bb5040c7f454cc9030_16664_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;1392&#34;
 				height=&#34;572&#34;
 				loading=&#34;lazy&#34;
@@ -531,7 +531,7 @@ $$&lt;/p&gt;
     &gt;Hugo 的 Release 页面&lt;/a&gt; 根据相应的版本以及平台进行下载，64 位的 Windows 电脑即选择下图中某一个即可。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 123; flex-basis: 296px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_4.png&#34; data-size=&#34;576x467&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_4.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_4_hu61decb19c436261dcc3b5881caaa17a6_8738_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_4_hu61decb19c436261dcc3b5881caaa17a6_8738_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_4_hu61decb19c436261dcc3b5881caaa17a6_8738_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_4_hu61decb19c436261dcc3b5881caaa17a6_8738_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;576&#34;
 				height=&#34;467&#34;
 				loading=&#34;lazy&#34;
@@ -545,7 +545,7 @@ $$&lt;/p&gt;
 &lt;p&gt;若是以上步骤都正常完成，那么可以在输入 &lt;code&gt;hugo version&lt;/code&gt; 命令后得到正常的版本号显示。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 435; flex-basis: 1046px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_5.png&#34; data-size=&#34;946x217&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_5.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_5_hu94dd87023e4fcbf453a8f901c200ab73_8475_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_5_hu94dd87023e4fcbf453a8f901c200ab73_8475_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_5_hu94dd87023e4fcbf453a8f901c200ab73_8475_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_5_hu94dd87023e4fcbf453a8f901c200ab73_8475_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;946&#34;
 				height=&#34;217&#34;
 				loading=&#34;lazy&#34;
@@ -560,7 +560,7 @@ $$&lt;/p&gt;
 &lt;p&gt;首先选择好一个合适的存储路径，接下来便可以通过 &lt;code&gt;hugo new site XXX&lt;/code&gt; 的命令来初始化网站。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 274; flex-basis: 659px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_6.png&#34; data-size=&#34;865x315&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_6.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_6_hu0cecf95dde98ec4047b8622de6f43efd_32453_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_6_hu0cecf95dde98ec4047b8622de6f43efd_32453_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_6_hu0cecf95dde98ec4047b8622de6f43efd_32453_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_6_hu0cecf95dde98ec4047b8622de6f43efd_32453_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;865&#34;
 				height=&#34;315&#34;
 				loading=&#34;lazy&#34;
@@ -573,14 +573,14 @@ $$&lt;/p&gt;
 &lt;p&gt;接下来便可以配置自己的博客主题了，我选择的是 MemE 主题，主要是看重它的简洁大方，同时字体渲染还蛮好看。主题的官方页面如下：&lt;a class=&#34;link&#34; href=&#34;https://github.com/reuixiy/hugo-theme-meme&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/reuixiy/hugo-theme-meme&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;下一步便进行主题的安装：（假设 blog 是你创建的 site 的名称）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~ $ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; blog
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~ $ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; blog
 ~/blog $ git init
 ~/blog $ git submodule add --depth &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同时，你也可以尝试新建文章的操作：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~/blog $ hugo new &lt;span class=&#34;s2&#34;&gt;&amp;#34;posts/hello-world.md&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~/blog $ hugo new &lt;span class=&#34;s2&#34;&gt;&amp;#34;posts/hello-world.md&amp;#34;&lt;/span&gt;
 ~/blog $ hugo new &lt;span class=&#34;s2&#34;&gt;&amp;#34;about/_index.md&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hugo 提供了一种非常便捷的预览方式，输入命令&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~/blog $ hugo server -D
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;~/blog $ hugo server -D
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;便可以在浏览器键入 &lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://localhost:1313/&lt;/a&gt; 而实现网站的实时预览。&lt;/p&gt;
 &lt;h2 id=&#34;自定义主题&#34;&gt;自定义主题&lt;/h2&gt;
@@ -588,7 +588,7 @@ $$&lt;/p&gt;
 &lt;p&gt;以我所使用的主题 MemE 为例，可以选择开启 &lt;strong&gt;KaTeX、MathJax、Mermaid&lt;/strong&gt; 等许多功能，同时对网站的几乎所有部分都可以更改或添加自定义元素：&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 79; flex-basis: 189px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_8.png&#34; data-size=&#34;710x897&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_8.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_8_hufd1662ecf804412a340eb0c909cb9183_31015_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_8_hufd1662ecf804412a340eb0c909cb9183_31015_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_8_hufd1662ecf804412a340eb0c909cb9183_31015_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_8_hufd1662ecf804412a340eb0c909cb9183_31015_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;710&#34;
 				height=&#34;897&#34;
 				loading=&#34;lazy&#34;
@@ -605,7 +605,7 @@ $$&lt;/p&gt;
 &lt;li&gt;在 GitHub 中创建一个名称为 username.github.io 的仓库（username 替换为你自己的用户名），同时其余选项均不勾选。&lt;/li&gt;
 &lt;li&gt;在你的 Hugo 网站目录下键入命令 &lt;code&gt;hugo -v&lt;/code&gt; 生成网站的相应文件，存储在 &lt;code&gt;public&lt;/code&gt; 目录下。&lt;/li&gt;
 &lt;li&gt;进入 &lt;code&gt;public&lt;/code&gt; 目录下，并按照正常的 git 命令操作：
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
 $ git init
 $ git remote add origin https://github.com/XXXX/XXXX.github.io.git
 $ git add -A
@@ -617,7 +617,7 @@ $ git push -u origin master
 &lt;p&gt;如果你需要使用自己的自定义域名来使你的 GiHub Pages 更为精致，那么你需要先到域名管理后台添加一条 CNAME 记录：&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 1042; flex-basis: 2502px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_9.png&#34; data-size=&#34;1658x159&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_9.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_9_hu871ef3592b8a047b1d7b062f9c8d03d0_10974_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_9_hu871ef3592b8a047b1d7b062f9c8d03d0_10974_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_9_hu871ef3592b8a047b1d7b062f9c8d03d0_10974_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_9_hu871ef3592b8a047b1d7b062f9c8d03d0_10974_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;1658&#34;
 				height=&#34;159&#34;
 				loading=&#34;lazy&#34;
@@ -630,7 +630,7 @@ $ git push -u origin master
 &lt;p&gt;进入仓库的 Settings 页面，找到 GitHub Pages 相应设置处：&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 109; flex-basis: 261px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_10.png&#34; data-size=&#34;949x870&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_10.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_10_hu80bb8eb10d8e00a201a3b57ece9a0edd_22937_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_10_hu80bb8eb10d8e00a201a3b57ece9a0edd_22937_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_10_hu80bb8eb10d8e00a201a3b57ece9a0edd_22937_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_10_hu80bb8eb10d8e00a201a3b57ece9a0edd_22937_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;949&#34;
 				height=&#34;870&#34;
 				loading=&#34;lazy&#34;
@@ -642,7 +642,7 @@ $ git push -u origin master
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;按照 GitHub 的提示，将自定义域名填入 Custom Domain 处，并勾选 Enforce HTTPS，等待一段时间使 DNS 记录生效后，便可以成功的访问自己的域名来进入博客了。&lt;/p&gt;
 &lt;p&gt;若是之后对文章进行了更新，便可以使用 git push 来进行同步：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
 $ git add .
 $ git status
 $ git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;add posts&amp;#34;&lt;/span&gt;
@@ -650,7 +650,7 @@ $ git push
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最终我的博客现在大概长下面这样：&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 85; flex-basis: 205px&#34;&gt;
 		&lt;a href=&#34;https://blog.pkulkw.me/p/myblog/blog_11.png&#34; data-size=&#34;1069x1248&#34;&gt;&lt;img src=&#34;https://blog.pkulkw.me/p/myblog/blog_11.png&#34;
-				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_480x0_resize_box_2.png 480w, https://blog.pkulkw.me/p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_1024x0_resize_box_2.png 1024w&#34;
+				srcset=&#34;https://blog.pkulkw.me/p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_480x0_resize_box_3.png 480w, https://blog.pkulkw.me/p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_1024x0_resize_box_3.png 1024w&#34;
 				width=&#34;1069&#34;
 				height=&#34;1248&#34;
 				loading=&#34;lazy&#34;

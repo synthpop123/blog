@@ -67,13 +67,7 @@
         
             <figure class="site-avatar">
                 
-                    
-                    
-                    
-                        
-                        <img src="/img/flash_hudb04aa7998d4b20cb49baef48fe35d4c_2855_300x0_resize_q75_box.jpg" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
+                    <img src="https://cdn.jsdelivr.net/gh/synthpop123/imagebed@master/img/flash_avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 
 
                 
@@ -343,7 +337,7 @@ p(1)&amp;=8, p(8)=4, p(4)=1 \\ p(2)&amp;=2 \\ p(3)&amp;=7, p(7)=3 \\ p(5)&amp;=6
 \end{cases}
 $$</p>
 <p>我们定义某一环中最小的值为这个环的头元素，那么每当我们发现了一个环的头元素 $k$，我们便将 $x_{p(k)}$ 的值填入 $x_k$ 处，将 $x_{p(p(k))}$ 的值填入 $x_{p(k)}$ 处&hellip;&hellip;最终将 $x_k$ 填入环的尾元素对应的位置即可。</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span>
    <span class="c1"># 从 p(j) 开始遍历这个环</span>
    <span class="n">k</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
    <span class="c1"># 如果 j 不是环的头元素，那么就会存在一个环上点 k &lt; j</span>
@@ -472,7 +466,7 @@ $$</p>
 <p>对于这种问题，一个时间复杂度为 $O(n\log n)$ 的排序算法便可以解决，因此，我们需要考虑的是有没有时间复杂度低于 $O(n\log n)$ 的算法。</p>
 <p>回忆我们已了解的算法以及刚学过的分治策略，根据快速排序的启发，我们可以采取如下思路：</p>
 <p>对于数组 $a_i,\cdots,a_j$，首先调用 <code>Partition()</code> 方法对 $a_i$ 的位置进行移动，记移动后的位置为 k，使它左边元素都比其小、右边元素都比其大。此时我们根据 k 和 t 的大小关系，就可以分别讨论接下来的搜索是在 k 的左侧还是右侧进行，抑或是此时 k 位置的元素正好是第 k 大的元素。</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">FindtthNumber</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">FindtthNumber</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
    <span class="n">key</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
    <span class="c1"># Partition()的实现参考快速排序的相关原理</span>
    <span class="c1"># Partition()返回的是分割后的数组下标</span>
