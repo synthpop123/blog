@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/post/</link>
-    <description>Recent content in Posts on Li Kangwei</description>
+    <title>Movie on Li Kangwei</title>
+    <link>https://blog.pkulkw.me/tags/movie/</link>
+    <description>Recent content in Movie on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Aug 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/movie/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>《影视鉴赏》课程：微影评写作</title>
       <link>https://blog.pkulkw.me/p/filmreviews/</link>
@@ -31,49 +31,6 @@
 影片的情节设计十分严谨，前半段中主人公深入敌营的过程与后半段其从敌营逃出的经历在结构上呈现出一种巧妙的平衡与对称。在保证影片结构严密的同时，基顿借助自己别具一格的肢体动作表演与充满现实主义的拍摄风格，使得《将军号》在保有一定的社会批判力度的同时更符合大众的银幕美学。
 惊险的追逐戏与恋人间的温情是基顿的作品中的重要元素，在《将军号》中，可以看到《警察》中陷入围捕机智逃脱的基顿，也可以看到《一周》里与妻子温馨相处的基顿。它具有着超越时代的独特魅力，直到百年后的今天，我们同样会为基顿的精彩创意而会心一笑。
  有话好好说 Keep Cool (1997) 《有话好好说》围绕着一个有关“沟通”的故事展开，从最初时一件小小的社会矛盾出发，经过一步步的激化，最终一发不可收拾。</description>
-    </item>
-    
-    <item>
-      <title>算法学习笔记：摊还分析 Amortized Analysis</title>
-      <link>https://blog.pkulkw.me/p/amortized-analysis/</link>
-      <pubDate>Fri, 07 May 2021 09:00:00 +0800</pubDate>
-      
-      <guid>https://blog.pkulkw.me/p/amortized-analysis/</guid>
-      <description>摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
-下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
-聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
-此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。
-考虑栈操作，我们熟知的基本栈操作：
- PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
-MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
- 每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。</description>
-    </item>
-    
-    <item>
-      <title>论文笔记：Mathematical Analysis of Algorithms</title>
-      <link>https://blog.pkulkw.me/p/knuth-paper/</link>
-      <pubDate>Thu, 18 Mar 2021 09:00:00 +0800</pubDate>
-      
-      <guid>https://blog.pkulkw.me/p/knuth-paper/</guid>
-      <description>&amp;ldquo;Mathematical Analysis of Algorithms&amp;rdquo; 由著名的计算机科学家 Donald Knuth 于 1971 年发表。
- 这篇文章主要引入两个具体的算法问题来展现算法效率分析的典型方法。
- Rearranging data without using auxiliary memory space. 不使用额外的存储空间的排序算法（原地排序）。 Finding the element of rank $t$ when $n$ elements are ranked by some linear ordering relation. 在线性有序表中查找特定值。  Introduction 算法分析领域的核心目标是研究如何量化分析各个不同算法的好坏，主要的两类问题如下：
- Analysis of a particular algorithm. 分析某些特定算法的基本特征。  Frequency analysis. 分析算法的各部分的执行次数情况，实际上是分析时间复杂度。 Storage analysis. 分析算法占用的内存资源情况，实际上是分析空间复杂度。   Analysis of a class of algorithms. 分析解决一类问题的所有算法，尝试找到最优的算法。  此外，本文指出第 2 类问题的两点弊端：
- 对技术性调整敏感。某些微小改变可能对最优算法的选取产生巨大的影响，因此研究往往被局限在一个有限范围内； 难以控制模型的拟合性。第 2 类问题的分析往往过于复杂，而简化模型可能与现实相悖，导致算法分析出现失误。  正因此，尽管第 1 类问题没有第 2 类问题有趣，但在实际应用中也可以发挥出巨大作用。在接下来的核心篇幅中，Knuth 便借助两个实例来具体阐述算法分析的基本思路。</description>
-    </item>
-    
-    <item>
-      <title>GitHub Pages &#43; Hugo：我的博客搭建之路</title>
-      <link>https://blog.pkulkw.me/p/myblog/</link>
-      <pubDate>Mon, 08 Feb 2021 09:00:00 +0800</pubDate>
-      
-      <guid>https://blog.pkulkw.me/p/myblog/</guid>
-      <description>很早就有自己购买域名搭建一个个人博客网站的想法了，而真正开始将这个想法付诸行动是源于 GitHub Student Developer Pack 的成功申请。
-申请 GitHub 学生开发包 GitHub 学生开发包内包含众多权益，比如 Termius 的 Premium 版、GitHub 的 Pro 版会员、name.com 以及 namecheap.com 提供的免费域名 + SSL 证书、DigitalOcean 提供的 50 刀代金券。权益实在太多了，大家可以对照官方网址逐一研究。
- GitHub 学生开发包 
-有关 GitHub 学生包具体如何申请，网上相关的教程非常多也相对比较容易，在此简单的写一下申请流程：
- 进入 GitHub 学生包 的官方页面； 点击「Get the Pack」按钮登录你的 GitHub 账号； 点击「Submit Your Information」提交信息进行申请，具体的填写可以参考下图（如果使用由学校提供的 edu 邮箱会加快审批速度）； 等待几天后收到邮件就可以享用 GitHub 学生开发包的所有权益。   GitHub 学生开发包申请示例 
-购买 DigitalOcean 云服务器 在 GitHub 学生包申请成功后我主要看了一下有关云服务器的权益，主要有 Microsoft Azure 的 100 刀额度、AWS 的 100 刀额度以及 DigitalOcean 的 50 刀额度。由于苦逼的我并没有信用卡，因此我最后选择了只需要绑定 Paypal 的 DigitalOcean。</description>
     </item>
     
   </channel>
