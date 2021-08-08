@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/tags/writing/</link>
+    <link>https://blog.pkulkw.me/categories/writing/</link>
     <description>Recent content in Writing on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Aug 2021 10:25:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 10:25:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/categories/writing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>《暴裂无声》：人性与法律的交叉地带</title>
       <link>https://blog.pkulkw.me/p/wrathofsilence/</link>
