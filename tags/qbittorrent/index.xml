@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>qBittorrent on Li Kangwei</title>
+    <link>https://blog.pkulkw.me/tags/qbittorrent/</link>
+    <description>Recent content in qBittorrent on Li Kangwei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 14 Aug 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/qbittorrent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian 10 上 qBittorrent 和 Transmission 的安装与配置</title>
+      <link>https://blog.pkulkw.me/p/transmission/</link>
+      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+      
+      <guid>https://blog.pkulkw.me/p/transmission/</guid>
+      <description>最近买了几台 BuyVM 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。
+前期操作 首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：
+hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包：
+apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
+apt-get remove vim-common apt-get install vim -y 安装与配置 qBittorrent 推荐使用 星大脚本 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 4.1.9 和 4.2.5，选一个安装就好。
+安装星大脚本：
+apt-get install wget -y bash &amp;lt;(wget -qO- https://git.io/abcde) 按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。
+vim /etc/rc.local # 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存 qbittorrent-nox -d 更推荐采用创建自定义服务的方式：
+vim /etc/systemd/system/qbittorrent-nox.service # 创建系统服务 然后将以下内容粘贴并保存</description>
+    </item>
+    
+  </channel>
+</rss>

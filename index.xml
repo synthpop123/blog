@@ -6,7 +6,102 @@
         <description>Recent content on Li Kangwei</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 08 Aug 2021 10:25:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 14 Aug 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Debian 10 上 qBittorrent 和 Transmission 的安装与配置</title>
+        <link>https://blog.pkulkw.me/p/transmission/</link>
+        <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+        
+        <guid>https://blog.pkulkw.me/p/transmission/</guid>
+        <description>&lt;img src="https://blog.pkulkw.me/p/transmission/cover.jpg" alt="Featured image of post Debian 10 上 qBittorrent 和 Transmission 的安装与配置" /&gt;&lt;p&gt;最近买了几台 &lt;a class=&#34;link&#34; href=&#34;https://buyvm.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BuyVM&lt;/a&gt; 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。&lt;/p&gt;
+&lt;h2 id=&#34;前期操作&#34;&gt;前期操作&lt;/h2&gt;
+&lt;p&gt;首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;hostnamectl set-hostname XXX &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来更新软件包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get update -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get upgrade -y
+apt-get autoremove -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get remove vim-common
+apt-get install vim -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装与配置-qbittorrent&#34;&gt;安装与配置 qBittorrent&lt;/h2&gt;
+&lt;p&gt;推荐使用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aniverse/inexistence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;星大脚本&lt;/a&gt; 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 &lt;code&gt;4.1.9&lt;/code&gt; 和 &lt;code&gt;4.2.5&lt;/code&gt;，选一个安装就好。&lt;/p&gt;
+&lt;p&gt;安装星大脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install wget -y
+bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;wget -qO- https://git.io/abcde&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim /etc/rc.local &lt;span class=&#34;c1&#34;&gt;# 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存&lt;/span&gt;
+qbittorrent-nox -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更推荐采用&lt;strong&gt;创建自定义服务&lt;/strong&gt;的方式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim /etc/systemd/system/qbittorrent-nox.service &lt;span class=&#34;c1&#34;&gt;# 创建系统服务&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后将以下内容粘贴并保存&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-service&#34; data-lang=&#34;service&#34;&gt;&lt;span class=&#34;k&#34;&gt;[Unit]&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;Description&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;qBittorrent-nox&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;After&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;network.target&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;[Service]&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;root&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;Type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;forking&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;RemainAfterExit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;yes&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;ExecStart&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;/usr/bin/qbittorrent-nox -d&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;[Install]&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;WantedBy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;multi-user.target&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来创建服务配置即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;systemctl start qbittorrent-nox  &lt;span class=&#34;c1&#34;&gt;#启动 qbittorrent-nox 并创建服务配置&lt;/span&gt;
+systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; qbittorrent-nox --now  &lt;span class=&#34;c1&#34;&gt;#设置开机自动启动 qbittorrent-nox&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后在浏览器键入 &lt;a class=&#34;link&#34; href=&#34;http://your-ip-address:8080/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://your-ip-address:8080/&lt;/a&gt; 就能够正常进入 qb 的登陆页面了。其中默认用户名为 &lt;code&gt;admin&lt;/code&gt;，默认密码为 &lt;code&gt;adminadmin&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;需要注意的是，（PT 用户）在控制面板中需要将以下选项及时取消勾选：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;启用 DHT (去中心化网络) 以找到更多用户&lt;/li&gt;
+&lt;li&gt;启用用户交换 (PeX) 以找到更多用户&lt;/li&gt;
+&lt;li&gt;启用本地用户发现以找到更多用户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;安装与配置-transmission&#34;&gt;安装与配置 Transmission&lt;/h2&gt;
+&lt;p&gt;Transmission 的安装同样可以借助 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aniverse/inexistence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;星大脚本&lt;/a&gt; 来完成，这里可以更为简便的仅安装 &lt;code&gt;transmission-daemon&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install transmission-daemon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置文件默认为 &lt;code&gt;/etc/transmission-daemon/settings.json&lt;/code&gt;，接下来可以用 Vim 对配置文件进行修改（注意修改配置文件时需要保证 transmission-daemon 服务处于停止运行的状态）。&lt;/p&gt;
+&lt;p&gt;配置 RPC 主要需要修改以下几项：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;开启&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;RPC&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;认证&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-authentication-required&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;DTH&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;默认是启用的，需要将其关闭&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;dht-enabled&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;启用&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;RPC，设置为&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;true&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-enabled&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;不启用白名单&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-host-whitelist&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;为了任意主机都能访问，修改为&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;false&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-host-whitelist-enabled&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;填入明文密码，在启动&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;daemon&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;服务之后会采用新的&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;HASH&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;值自动加密&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-password&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;123456&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;WebUI&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;端口默认为&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;9091，建议修改&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-port&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;9091&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/transmission/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;用户名，默认为&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;transmission，建议修改&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-username&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;transmission&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-whitelist&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;127.0.0.1,0.0.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+   &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;为了任意主机都能访问，修改为&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;false&lt;/span&gt;
+   &lt;span class=&#34;nt&#34;&gt;&amp;#34;rpc-whitelist-enabled&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来可以正式启动 Transmission 程序，如果需要配置开机自启可以另行操作。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;service transmission-daemon start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此时我们在浏览器键入 &lt;a class=&#34;link&#34; href=&#34;http://127.0.0.1:9091/transmission/web/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://your-ip-address:9091/transmission/web/&lt;/a&gt; 后便可以使用 WebUI 来访问与控制 Transmission 了。然而默认 UI 功能与界面都十分简陋，同时还缺少汉化，因此在大多数情形下采用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/ronggang/transmission-web-control&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Transmission Web Control&lt;/a&gt; 来作为增强版 UI。&lt;/p&gt;
+&lt;p&gt;在已获取 root 权限的基础之上，首先下载最新版本的脚本。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;wget https://github.com/ronggang/transmission-web-control/raw/master/release/install-tr-control-cn.sh --no-check-certificate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来添加执行权限。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;chmod +x install-tr-control-cn.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后执行安装脚本即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;bash install-tr-control-cn.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>《暴裂无声》：人性与法律的交叉地带</title>
         <link>https://blog.pkulkw.me/p/wrathofsilence/</link>
         <pubDate>Sun, 08 Aug 2021 10:25:00 +0800</pubDate>

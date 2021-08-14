@@ -2,10 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.pkulkw.me/tags/article/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
     <loc>https://blog.pkulkw.me/categories/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/p/transmission/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/linux/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/post/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/pt/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/qbittorrent/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/categories/tech/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/transmission/</loc>
+    <lastmod>2021-08-14T20:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.pkulkw.me/tags/article/</loc>
     <lastmod>2021-08-08T10:25:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/course/</loc>
@@ -14,16 +41,7 @@
     <loc>https://blog.pkulkw.me/tags/law/</loc>
     <lastmod>2021-08-08T10:25:00+08:00</lastmod>
   </url><url>
-    <loc>https://blog.pkulkw.me/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
     <loc>https://blog.pkulkw.me/tags/movie/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/post/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/tags/</loc>
     <lastmod>2021-08-08T10:25:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/writing/</loc>
@@ -60,9 +78,6 @@
     <lastmod>2021-02-08T09:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/hugo/</loc>
-    <lastmod>2021-02-08T09:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/categories/tech/</loc>
     <lastmod>2021-02-08T09:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/tags/wordpress/</loc>

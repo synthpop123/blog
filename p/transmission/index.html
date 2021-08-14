@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='最近买了几台 BuyVM 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。
+前期操作 首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：
+hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包：
+apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
+apt-get remove vim-common apt-get install vim -y 安装与配置 qBittorrent 推荐使用 星大脚本 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 4.1.9 和 4.2.5，选一个安装就好。
+安装星大脚本：
+apt-get install wget -y bash &amp;lt;(wget -qO- https://git.io/abcde) 按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。
+vim /etc/rc.local # 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存 qbittorrent-nox -d 更推荐采用创建自定义服务的方式：
+vim /etc/systemd/system/qbittorrent-nox.service # 创建系统服务 然后将以下内容粘贴并保存'><title>Debian 10 上 qBittorrent 和 Transmission 的安装与配置</title>
+
+<link rel='canonical' href='https://blog.pkulkw.me/p/transmission/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Debian 10 上 qBittorrent 和 Transmission 的安装与配置'>
+<meta property='og:description' content='最近买了几台 BuyVM 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。
+前期操作 首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：
+hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包：
+apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
+apt-get remove vim-common apt-get install vim -y 安装与配置 qBittorrent 推荐使用 星大脚本 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 4.1.9 和 4.2.5，选一个安装就好。
+安装星大脚本：
+apt-get install wget -y bash &amp;lt;(wget -qO- https://git.io/abcde) 按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。
+vim /etc/rc.local # 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存 qbittorrent-nox -d 更推荐采用创建自定义服务的方式：
+vim /etc/systemd/system/qbittorrent-nox.service # 创建系统服务 然后将以下内容粘贴并保存'>
+<meta property='og:url' content='https://blog.pkulkw.me/p/transmission/'>
+<meta property='og:site_name' content='Li Kangwei'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PT' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='Transmission' /><meta property='article:tag' content='qBittorrent' /><meta property='article:published_time' content='2021-08-14T20:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-08-14T20:00:00&#43;08:00'/><meta property='og:image' content='https://blog.pkulkw.me/p/transmission/cover.jpg' />
+<meta name="twitter:site" content="@whoamamamiii">
+    <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="Debian 10 上 qBittorrent 和 Transmission 的安装与配置">
+<meta name="twitter:description" content="最近买了几台 BuyVM 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。
+前期操作 首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：
+hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包：
+apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
+apt-get remove vim-common apt-get install vim -y 安装与配置 qBittorrent 推荐使用 星大脚本 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 4.1.9 和 4.2.5，选一个安装就好。
+安装星大脚本：
+apt-get install wget -y bash &amp;lt;(wget -qO- https://git.io/abcde) 按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。
+vim /etc/rc.local # 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存 qbittorrent-nox -d 更推荐采用创建自定义服务的方式：
+vim /etc/systemd/system/qbittorrent-nox.service # 创建系统服务 然后将以下内容粘贴并保存"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.pkulkw.me/p/transmission/cover.jpg' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#555fe4">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            localStorage.setItem(colorSchemeKey, "light");
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    <img src="https://cdn.jsdelivr.net/gh/synthpop123/imagebed@master/img/flash_avatar.jpg" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+
+                
+                    <span class="emoji">🔥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://blog.pkulkw.me/">Li Kangwei</a></h1>
+        <h2 class="site-description">Think Different</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/index.xml'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>RSS</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://blog.pkulkw.me/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/transmission/">
+                <img src="/p/transmission/cover_hu971c5afbd587f29bfa03084d06af259c_72306_800x0_resize_q75_box.jpg"
+                        srcset="/p/transmission/cover_hu971c5afbd587f29bfa03084d06af259c_72306_800x0_resize_q75_box.jpg 800w, /p/transmission/cover_hu971c5afbd587f29bfa03084d06af259c_72306_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Debian 10 上 qBittorrent 和 Transmission 的安装与配置" />
+                
+            </a>
+        </div>
+    
+
+    
+<div class="article-details">
+
+
+    <h2 class="article-title">
+        <a href="/p/transmission/">Debian 10 上 qBittorrent 和 Transmission 的安装与配置</a>
+    </h2>
+
+    <footer class="article-time">
+        <time class="article-time--published"></time>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+Aug 14, 2021&nbsp;&nbsp;&nbsp;&nbsp;
+
+    
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2" viewBox="0 0 16 16">
+  <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5v-9zM2.5 3a.5.5 0 0 0-.5.5V6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5zM14 7H2v5.5a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V7z"/>
+</svg>
+        
+            <a style="color: inherit;" href="/categories/tech/">
+                Tech
+            </a>&nbsp;&nbsp;
+        
+    
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>最近买了几台 <a class="link" href="https://buyvm.net"  target="_blank" rel="noopener"
+    >BuyVM</a> 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。</p>
+<h2 id="前期操作">前期操作</h2>
+<p>首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hostnamectl set-hostname XXX <span class="o">&amp;&amp;</span> reboot
+</code></pre></div><p>接下来更新软件包：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">apt-get update -y <span class="o">&amp;&amp;</span> apt-get upgrade -y
+apt-get autoremove -y
+</code></pre></div><p>同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">apt-get remove vim-common
+apt-get install vim -y
+</code></pre></div><h2 id="安装与配置-qbittorrent">安装与配置 qBittorrent</h2>
+<p>推荐使用 <a class="link" href="https://github.com/Aniverse/inexistence"  target="_blank" rel="noopener"
+    >星大脚本</a> 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 <code>4.1.9</code> 和 <code>4.2.5</code>，选一个安装就好。</p>
+<p>安装星大脚本：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">apt-get install wget -y
+bash &lt;<span class="o">(</span>wget -qO- https://git.io/abcde<span class="o">)</span>
+</code></pre></div><p>按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">vim /etc/rc.local <span class="c1"># 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存</span>
+qbittorrent-nox -d
+</code></pre></div><p>更推荐采用<strong>创建自定义服务</strong>的方式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">vim /etc/systemd/system/qbittorrent-nox.service <span class="c1"># 创建系统服务</span>
+</code></pre></div><p>然后将以下内容粘贴并保存</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-service" data-lang="service"><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">qBittorrent-nox</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">User</span><span class="o">=</span><span class="s">root</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">forking</span>
+<span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/qbittorrent-nox -d</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div><p>接下来创建服务配置即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">systemctl start qbittorrent-nox  <span class="c1">#启动 qbittorrent-nox 并创建服务配置</span>
+systemctl <span class="nb">enable</span> qbittorrent-nox --now  <span class="c1">#设置开机自动启动 qbittorrent-nox</span>
+</code></pre></div><p>最后在浏览器键入 <a class="link" href="http://your-ip-address:8080/"  target="_blank" rel="noopener"
+    >http://your-ip-address:8080/</a> 就能够正常进入 qb 的登陆页面了。其中默认用户名为 <code>admin</code>，默认密码为 <code>adminadmin</code>。</p>
+<p>需要注意的是，（PT 用户）在控制面板中需要将以下选项及时取消勾选：</p>
+<blockquote>
+<ul>
+<li>启用 DHT (去中心化网络) 以找到更多用户</li>
+<li>启用用户交换 (PeX) 以找到更多用户</li>
+<li>启用本地用户发现以找到更多用户</li>
+</ul>
+</blockquote>
+<h2 id="安装与配置-transmission">安装与配置 Transmission</h2>
+<p>Transmission 的安装同样可以借助 <a class="link" href="https://github.com/Aniverse/inexistence"  target="_blank" rel="noopener"
+    >星大脚本</a> 来完成，这里可以更为简便的仅安装 <code>transmission-daemon</code> 即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">apt-get install transmission-daemon
+</code></pre></div><p>配置文件默认为 <code>/etc/transmission-daemon/settings.json</code>，接下来可以用 Vim 对配置文件进行修改（注意修改配置文件时需要保证 transmission-daemon 服务处于停止运行的状态）。</p>
+<p>配置 RPC 主要需要修改以下几项：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+   <span class="err">#</span> <span class="err">开启</span> <span class="err">RPC</span> <span class="err">认证</span>
+   <span class="nt">&#34;rpc-authentication-required&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">DTH</span> <span class="err">默认是启用的，需要将其关闭</span>
+   <span class="nt">&#34;dht-enabled&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">启用</span> <span class="err">RPC，设置为</span> <span class="err">true</span>
+   <span class="nt">&#34;rpc-enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">不启用白名单</span>
+   <span class="nt">&#34;rpc-host-whitelist&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">为了任意主机都能访问，修改为</span> <span class="err">false</span>
+   <span class="nt">&#34;rpc-host-whitelist-enabled&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">填入明文密码，在启动</span> <span class="err">daemon</span> <span class="err">服务之后会采用新的</span> <span class="err">HASH</span> <span class="err">值自动加密</span>
+   <span class="nt">&#34;rpc-password&#34;</span><span class="p">:</span> <span class="s2">&#34;123456&#34;</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">WebUI</span> <span class="err">端口默认为</span> <span class="err">9091，建议修改</span>
+   <span class="nt">&#34;rpc-port&#34;</span><span class="p">:</span> <span class="mi">9091</span><span class="p">,</span>
+   <span class="nt">&#34;rpc-url&#34;</span><span class="p">:</span> <span class="s2">&#34;/transmission/&#34;</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">用户名，默认为</span> <span class="err">transmission，建议修改</span>
+   <span class="nt">&#34;rpc-username&#34;</span><span class="p">:</span> <span class="s2">&#34;transmission&#34;</span><span class="p">,</span>
+   <span class="nt">&#34;rpc-whitelist&#34;</span><span class="p">:</span> <span class="s2">&#34;127.0.0.1,0.0.0.0&#34;</span><span class="p">,</span>
+   <span class="err">#</span> <span class="err">为了任意主机都能访问，修改为</span> <span class="err">false</span>
+   <span class="nt">&#34;rpc-whitelist-enabled&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div><p>接下来可以正式启动 Transmission 程序，如果需要配置开机自启可以另行操作。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">service transmission-daemon start
+</code></pre></div><p>此时我们在浏览器键入 <a class="link" href="http://127.0.0.1:9091/transmission/web/"  target="_blank" rel="noopener"
+    >http://your-ip-address:9091/transmission/web/</a> 后便可以使用 WebUI 来访问与控制 Transmission 了。然而默认 UI 功能与界面都十分简陋，同时还缺少汉化，因此在大多数情形下采用 <a class="link" href="https://github.com/ronggang/transmission-web-control"  target="_blank" rel="noopener"
+    >Transmission Web Control</a> 来作为增强版 UI。</p>
+<p>在已获取 root 权限的基础之上，首先下载最新版本的脚本。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">wget https://github.com/ronggang/transmission-web-control/raw/master/release/install-tr-control-cn.sh --no-check-certificate
+</code></pre></div><p>接下来添加执行权限。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">chmod +x install-tr-control-cn.sh
+</code></pre></div><p>最后执行安装脚本即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">bash install-tr-control-cn.sh
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pt/">PT</a>
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/transmission/">Transmission</a>
+        
+            <a href="/tags/qbittorrent/">qBittorrent</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    
+        
+    <script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+    .waline-container .vcount {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    new Waline({"avatar":"robohash","dark":"body[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"locale":{"admin":"Admin"},"requiredMeta":["name","email","url"],"serverURL":"https://waline-api-pearl.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Li Kangwei
+    </section>
+    
+    <section class="powerby">
+        Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script id="ribbon" src="https://cdn.jsdelivr.net/gh/zproo/canvas-ribbon@master/js/canvas-ribbon.min.js"></script>
+    </body>
+</html>
