@@ -23,13 +23,36 @@ apt-get autoremove -y
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get remove vim-common
 apt-get install vim -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果是购买的 BuyVM 的渣渣机器的话，不能遗漏挂载储存块这一步。&lt;/p&gt;
+&lt;p&gt;首先在 BuyVM 的后台管理页面将储存块与相应地区的 VPS 绑定，接下来有如下几步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看数据盘标号/名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ls /dev/disk/by-id/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;格式化硬盘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkfs.ext4 -F /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;创建挂载文件夹&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir -p /目录
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;挂载硬盘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;设置开机自动加载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录 ext4 defaults,nofail,discard 0 0&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee -a /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装与配置-qbittorrent&#34;&gt;安装与配置 qBittorrent&lt;/h2&gt;
 &lt;p&gt;推荐使用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aniverse/inexistence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;星大脚本&lt;/a&gt; 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 &lt;code&gt;4.1.9&lt;/code&gt; 和 &lt;code&gt;4.2.5&lt;/code&gt;，选一个安装就好。&lt;/p&gt;
 &lt;p&gt;安装星大脚本：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install wget -y
 bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;wget -qO- https://git.io/abcde&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照指引安装即可，接下来需要配置 qBittorrent-nox 的开机自启。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照指引安装即可，接下来可以试着配置 qBittorrent-nox 的开机自启。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim /etc/rc.local &lt;span class=&#34;c1&#34;&gt;# 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存&lt;/span&gt;
 qbittorrent-nox -d
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更推荐采用&lt;strong&gt;创建自定义服务&lt;/strong&gt;的方式：&lt;/p&gt;
