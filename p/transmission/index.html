@@ -318,8 +318,7 @@ systemctl <span class="nb">enable</span> qbittorrent-nox --now  <span class="c1"
 </ul>
 </blockquote>
 <h2 id="安装与配置-transmission">安装与配置 Transmission</h2>
-<p>Transmission 的安装同样可以借助 <a class="link" href="https://github.com/Aniverse/inexistence"  target="_blank" rel="noopener"
-    >星大脚本</a> 来完成，这里可以更为简便的仅安装 <code>transmission-daemon</code> 即可。</p>
+<p>从软件源直接安装 <code>transmission-daemon</code> 即可。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">apt-get install transmission-daemon
 </code></pre></div><p>配置文件默认为 <code>/etc/transmission-daemon/settings.json</code>，接下来可以用 Vim 对配置文件进行修改（注意修改配置文件时需要保证 transmission-daemon 服务处于停止运行的状态）。</p>
 <p>配置 RPC 主要需要修改以下几项：</p>
