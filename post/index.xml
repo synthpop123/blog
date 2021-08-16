@@ -19,8 +19,8 @@ hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包�
 apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
 apt-get remove vim-common apt-get install vim -y 如果是购买的 BuyVM 的渣渣机器的话，不能遗漏挂载储存块这一步。
 首先在 BuyVM 的后台管理页面将储存块与相应地区的 VPS 绑定，接下来有如下几步：
- 查看数据盘标号/名称  ls /dev/disk/by-id/ 看到ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）
- 格式化硬盘  mkfs.ext4 -F /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号  创建挂载文件夹  mkdir -p /目录  挂载硬盘  mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录  设置开机自动加载  echo &amp;#39;/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录 ext4 defaults,nofail,discard 0 0&amp;#39; | tee -a /etc/fstab 安装与配置 qBittorrent 推荐使用 星大脚本 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 4.</description>
+ 查看数据盘标号/名称  ls /dev/disk/by-id/ 看到 ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）
+ 格式化硬盘  mkfs.ext4 -F /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号  创建挂载文件夹  mkdir -p /目录  挂载硬盘  mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录  设置开机自动加载  echo &amp;#39;/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录 ext4 defaults,nofail,discard 0 0&amp;#39; | tee -a /etc/fstab 安装与配置 qBittorrent 安装 qb 是相当简单的，从软件源直接安装即可。</description>
     </item>
     
     <item>

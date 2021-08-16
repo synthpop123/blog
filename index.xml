@@ -29,7 +29,7 @@ apt-get install vim -y
 &lt;li&gt;查看数据盘标号/名称&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ls /dev/disk/by-id/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到 ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;格式化硬盘&lt;/li&gt;
 &lt;/ul&gt;
@@ -47,15 +47,12 @@ apt-get install vim -y
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录 ext4 defaults,nofail,discard 0 0&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee -a /etc/fstab
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装与配置-qbittorrent&#34;&gt;安装与配置 qBittorrent&lt;/h2&gt;
-&lt;p&gt;推荐使用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aniverse/inexistence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;星大脚本&lt;/a&gt; 来进行无障碍的傻瓜式一键安装，就 qb 而言，比较常用的版本是 &lt;code&gt;4.1.9&lt;/code&gt; 和 &lt;code&gt;4.2.5&lt;/code&gt;，选一个安装就好。&lt;/p&gt;
-&lt;p&gt;安装星大脚本：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install wget -y
-bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;wget -qO- https://git.io/abcde&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照指引安装即可，接下来可以试着配置 qBittorrent-nox 的开机自启。&lt;/p&gt;
+&lt;p&gt;安装 qb 是相当简单的，从软件源直接安装即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apt-get install qbittorrent-nox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;软件源里的版本比较旧，如果想安装新的版本，可以自行编译。接下来可以试着配置 qBittorrent-nox 的开机自启。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim /etc/rc.local &lt;span class=&#34;c1&#34;&gt;# 编辑 rc.local 脚本，在 exit 0 前一行添加以下内容并保存&lt;/span&gt;
 qbittorrent-nox -d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更推荐采用&lt;strong&gt;创建自定义服务&lt;/strong&gt;的方式：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更推荐采用创建自定义服务的方式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim /etc/systemd/system/qbittorrent-nox.service &lt;span class=&#34;c1&#34;&gt;# 创建系统服务&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后将以下内容粘贴并保存&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-service&#34; data-lang=&#34;service&#34;&gt;&lt;span class=&#34;k&#34;&gt;[Unit]&lt;/span&gt;
@@ -75,7 +72,7 @@ qbittorrent-nox -d
 systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; qbittorrent-nox --now  &lt;span class=&#34;c1&#34;&gt;#设置开机自动启动 qbittorrent-nox&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后在浏览器键入 &lt;a class=&#34;link&#34; href=&#34;http://your-ip-address:8080/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://your-ip-address:8080/&lt;/a&gt; 就能够正常进入 qb 的登陆页面了。其中默认用户名为 &lt;code&gt;admin&lt;/code&gt;，默认密码为 &lt;code&gt;adminadmin&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;需要注意的是，（PT 用户）在控制面板中需要将以下选项及时取消勾选：&lt;/p&gt;
+&lt;p&gt;需要注意的是，（PT 用户）在控制面板中需要将以下选项及时&lt;strong&gt;取消勾选&lt;/strong&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;启用 DHT (去中心化网络) 以找到更多用户&lt;/li&gt;
@@ -122,7 +119,10 @@ systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; qbittorrent-nox --n
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;chmod +x install-tr-control-cn.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后执行安装脚本即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;bash install-tr-control-cn.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后，感谢大佬们提供的优秀脚本。选择 &lt;a class=&#34;link&#34; href=&#34;https://github.com/amefs/quickbox-lite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;QuickBox-Lite&lt;/a&gt; 或者 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Aniverse/inexistence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;星大脚本&lt;/a&gt; 等会是快速配置环境的更好更有效的方式。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>《暴裂无声》：人性与法律的交叉地带</title>
