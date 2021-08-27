@@ -32,27 +32,6 @@
     <loc>https://blog.pkulkw.me/tags/transmission/</loc>
     <lastmod>2021-08-14T20:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://blog.pkulkw.me/tags/article/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/tags/course/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/tags/law/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/tags/movie/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/tags/writing/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/categories/writing/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.pkulkw.me/p/wrathofsilence/</loc>
-    <lastmod>2021-08-08T10:25:00+08:00</lastmod>
-  </url><url>
     <loc>https://blog.pkulkw.me/tags/algorithm/</loc>
     <lastmod>2021-05-07T09:00:00+08:00</lastmod>
   </url><url>
@@ -93,5 +72,7 @@
     <lastmod>2021-02-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.pkulkw.me/search/</loc>
+  </url><url>
+    <loc>https://blog.pkulkw.me/categories/writing/</loc>
   </url>
 </urlset>
