@@ -6,21 +6,14 @@
     <description>Recent content in PT on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 14 Aug 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/pt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Sep 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/pt/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Debian 10 上 qBittorrent 和 Transmission 的安装与配置</title>
-      <link>https://blog.pkulkw.me/p/transmission/</link>
-      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+      <title>PT 下载环境搭建 &amp; 参数的优化调整</title>
+      <link>https://blog.pkulkw.me/p/seedbox/</link>
+      <pubDate>Thu, 16 Sep 2021 20:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/p/transmission/</guid>
-      <description>最近买了几台 BuyVM 的大盘鸡用来保种，顺便过几个新站的考核，而拿到一台新的机器时首要的是配置环境，安装相关的软件来支撑服务的运行。
-前期操作 首先我很不习惯主机默认的 hostname，因此第一步会将 hostname 更改并重启：
-hostnamectl set-hostname XXX &amp;amp;&amp;amp; reboot 接下来更新软件包：
-apt-get update -y &amp;amp;&amp;amp; apt-get upgrade -y apt-get autoremove -y 同时为了更便捷地修改配置文件等，安装 Vim 也是相当重要的一步：
-apt-get remove vim-common -y apt-get install vim -y 如果是购买的 BuyVM 的渣渣机器的话，不能遗漏挂载储存块这一步。
-首先在 BuyVM 的后台管理页面将储存块与相应地区的 VPS 绑定，接下来有如下几步：
- 查看数据盘标号/名称  ls /dev/disk/by-id/ 看到 ata-QEMU_DVD-ROM_QM00004 scsi-0BUYVM_SLAB_VOLUME-**** （这里就是编号）
- 格式化硬盘  mkfs.ext4 -F /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号  创建挂载文件夹  mkdir -p /目录  挂载硬盘  mount -o discard,defaults /dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录  设置开机自动加载  echo &amp;#39;/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-编号 /目录 ext4 defaults,nofail,discard 0 0&amp;#39; | tee -a /etc/fstab 安装与配置 qBittorrent 安装 qb 是相当简单的，从软件源直接安装即可。</description>
+      <guid>https://blog.pkulkw.me/p/seedbox/</guid>
+      <description></description>
     </item>
     
   </channel>

@@ -6,23 +6,7 @@
     <description>Recent content in Study on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 07 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/categories/study/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>算法学习笔记：摊还分析 Amortized Analysis</title>
-      <link>https://blog.pkulkw.me/p/amortized-analysis/</link>
-      <pubDate>Fri, 07 May 2021 09:00:00 +0800</pubDate>
-      
-      <guid>https://blog.pkulkw.me/p/amortized-analysis/</guid>
-      <description>摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
-下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
-聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
-此摊还代价适用于序列中的每个操作（即使操作类型不同也是如此）。
-考虑栈操作，我们熟知的基本栈操作：
- PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
-MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
- 每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。</description>
-    </item>
-    
+    <lastBuildDate>Thu, 18 Mar 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>论文笔记：Mathematical Analysis of Algorithms</title>
       <link>https://blog.pkulkw.me/p/knuth-paper/</link>

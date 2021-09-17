@@ -6,11 +6,20 @@
     <description>Recent content in Tags on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 14 Aug 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Sep 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deluge</title>
+      <link>https://blog.pkulkw.me/tags/deluge/</link>
+      <pubDate>Thu, 16 Sep 2021 20:00:00 +0800</pubDate>
+      
+      <guid>https://blog.pkulkw.me/tags/deluge/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>https://blog.pkulkw.me/tags/linux/</link>
-      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+      <pubDate>Thu, 16 Sep 2021 20:00:00 +0800</pubDate>
       
       <guid>https://blog.pkulkw.me/tags/linux/</guid>
       <description></description>
@@ -19,27 +28,18 @@
     <item>
       <title>PT</title>
       <link>https://blog.pkulkw.me/tags/pt/</link>
-      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+      <pubDate>Thu, 16 Sep 2021 20:00:00 +0800</pubDate>
       
       <guid>https://blog.pkulkw.me/tags/pt/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>qBittorrent</title>
-      <link>https://blog.pkulkw.me/tags/qbittorrent/</link>
-      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
+      <title>VPS</title>
+      <link>https://blog.pkulkw.me/tags/vps/</link>
+      <pubDate>Thu, 16 Sep 2021 20:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/tags/qbittorrent/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Transmission</title>
-      <link>https://blog.pkulkw.me/tags/transmission/</link>
-      <pubDate>Sat, 14 Aug 2021 20:00:00 +0800</pubDate>
-      
-      <guid>https://blog.pkulkw.me/tags/transmission/</guid>
+      <guid>https://blog.pkulkw.me/tags/vps/</guid>
       <description></description>
     </item>
     
