@@ -18,8 +18,8 @@
 &lt;h2 id=&#34;安装系统并组建-raid-0&#34;&gt;安装系统并组建 RAID 0&lt;/h2&gt;
 &lt;p&gt;进入救援模式并一键安装系统（RAID 0），以 Debian 10 为例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; x &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; installimage -p /boot:ext3:1G,/:ext4:all -l &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; -r yes -i images/Debian-1010-buster-64-minimal.tar.gz  -a -n Hz &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装-bbr-与星大脚本&#34;&gt;安装 BBR 与星大脚本&lt;/h2&gt;
-&lt;p&gt;运行 AccTCP 网络优化脚本，安装 BBR/锐速等替换服务器自身的 Cubic 算法。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;配置-bbr-与星大脚本&#34;&gt;配置 BBR 与星大脚本&lt;/h2&gt;
+&lt;p&gt;运行 AccTCP 网络优化脚本，使用 BBR 替换服务器自身的 Cubic 拥塞控制算法。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;curl -Ls https://git.io/AccTCP&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以运行另一个脚本查看更详细的系统信息（包括硬盘通电时间等）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;curl -Ls https://git.io/ceshi&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
@@ -97,10 +97,9 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;flexget --test execute
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装与配置-autoremove-torrents&#34;&gt;安装与配置 Autoremove-torrents&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://autoremove-torrents.readthedocs.io/zh_CN/latest/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官网中文文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;首先直接从 pip 进行安装：&lt;/p&gt;
+    &gt;中文文档&lt;/a&gt;，首先直接从 pip 进行安装：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;pip install autoremove-torrents
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来新建一个目录用于存放配置文件与运行日志，并进在该目录下新建一个配置文件 &lt;code&gt;config.yml&lt;/code&gt;：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来新建一个目录用于存放配置文件与运行日志，并进入该目录同时新建一个配置文件 &lt;code&gt;config.yml&lt;/code&gt;：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir -p ~/.config/art/artlogs
 vim ~/.config/art/config.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;基本配置文件如下：&lt;/p&gt;
