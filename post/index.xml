@@ -19,7 +19,7 @@ echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-1
 bash &amp;lt;(curl -Ls https://git.io/AccTCP) 可以运行另一个脚本查看更详细的系统信息（包括硬盘通电时间等）：
 bash &amp;lt;(curl -Ls https://git.io/ceshi) 接下来安装星大脚本：
 bash &amp;lt;(wget -qO- https://git.io/abcde) 个人习惯一般选择安装 Deluge 1.3.15 以及 Flexget，并选择进行 system tweaks，安装完成后会展示出各个客户端的 Web UI 网址并重启。
-配置 Flexget 新建文件夹 mkdir ~/.</description>
+配置 Flexget 新建文件夹 .</description>
     </item>
     
     <item>

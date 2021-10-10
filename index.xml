@@ -28,8 +28,9 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;bash &amp;lt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;wget -qO- https://git.io/abcde&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;个人习惯一般选择安装 Deluge 1.3.15 以及 Flexget，并选择进行 system tweaks，安装完成后会展示出各个客户端的 Web UI 网址并重启。&lt;/p&gt;
 &lt;h2 id=&#34;配置-flexget&#34;&gt;配置 Flexget&lt;/h2&gt;
-&lt;p&gt;新建文件夹 &lt;code&gt;mkdir ~/.flexget&lt;/code&gt; 并进入该目录下，同时新建配置文件 &lt;code&gt;config.yml&lt;/code&gt;。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vim ~/.flexget/config.yml
+&lt;p&gt;新建文件夹 &lt;code&gt;.flexget&lt;/code&gt; 并进入该目录下，同时新建配置文件 &lt;code&gt;config.yml&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir ~/.flexget
+vim ~/.flexget/config.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;基本配置文件如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;templates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;standard&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
