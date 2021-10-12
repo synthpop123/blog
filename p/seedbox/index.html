@@ -265,7 +265,12 @@ Oct 09, 2021&nbsp;&nbsp;&nbsp;&nbsp;
 <p>新建文件夹 <code>.flexget</code> 并进入该目录下，同时新建配置文件 <code>config.yml</code>。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir ~/.flexget
 vim ~/.flexget/config.yml
-</code></pre></div><p>基本配置文件如下：</p>
+</code></pre></div><p>除此之外，还需安装 <a class="link" href="https://github.com/Juszoe/flexget-nexusphp"  target="_blank" rel="noopener"
+    >Flexget-Nexusphp</a> 插件，对 details.php 页面进行爬取，对种子的优惠信息进行更好的判断。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir -p ~/.flexget/plugins
+<span class="nb">cd</span> ~/.flexget/plugins
+wget https://raw.githubusercontent.com/Juszoe/flexget-nexusphp/master/nexusphp.py
+</code></pre></div><p><code>config.yml</code> 基本配置文件如下：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">templates</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">standard</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">free_space</span><span class="p">:</span><span class="w">

@@ -31,7 +31,12 @@
 &lt;p&gt;新建文件夹 &lt;code&gt;.flexget&lt;/code&gt; 并进入该目录下，同时新建配置文件 &lt;code&gt;config.yml&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir ~/.flexget
 vim ~/.flexget/config.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;基本配置文件如下：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;除此之外，还需安装 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Juszoe/flexget-nexusphp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Flexget-Nexusphp&lt;/a&gt; 插件，对 details.php 页面进行爬取，对种子的优惠信息进行更好的判断。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;mkdir -p ~/.flexget/plugins
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/.flexget/plugins
+wget https://raw.githubusercontent.com/Juszoe/flexget-nexusphp/master/nexusphp.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;config.yml&lt;/code&gt; 基本配置文件如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;templates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;standard&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;free_space&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
