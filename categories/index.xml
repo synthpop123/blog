@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/categories/</link>
+    <link>https://blog.lkwplus.com/categories/</link>
     <description>Recent content in Categories on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Oct 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Oct 2021 20:00:00 +0800</lastBuildDate><atom:link href="https://blog.lkwplus.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tech</title>
-      <link>https://blog.pkulkw.me/categories/tech/</link>
+      <link>https://blog.lkwplus.com/categories/tech/</link>
       <pubDate>Sat, 09 Oct 2021 20:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/categories/tech/</guid>
+      <guid>https://blog.lkwplus.com/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notes</title>
-      <link>https://blog.pkulkw.me/categories/notes/</link>
+      <link>https://blog.lkwplus.com/categories/notes/</link>
       <pubDate>Fri, 07 May 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/categories/notes/</guid>
+      <guid>https://blog.lkwplus.com/categories/notes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Study</title>
-      <link>https://blog.pkulkw.me/categories/study/</link>
+      <link>https://blog.lkwplus.com/categories/study/</link>
       <pubDate>Thu, 18 Mar 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/categories/study/</guid>
+      <guid>https://blog.lkwplus.com/categories/study/</guid>
       <description></description>
     </item>
     

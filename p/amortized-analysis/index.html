@@ -10,7 +10,7 @@
 MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
  每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。'><title>算法学习笔记：摊还分析 Amortized Analysis</title>
 
-<link rel='canonical' href='https://blog.pkulkw.me/p/amortized-analysis/'>
+<link rel='canonical' href='https://blog.lkwplus.com/p/amortized-analysis/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='算法学习笔记：摊还分析 Amortized Analysis'>
 <meta property='og:description' content='摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
@@ -21,9 +21,9 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
  PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
 MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
  每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。'>
-<meta property='og:url' content='https://blog.pkulkw.me/p/amortized-analysis/'>
+<meta property='og:url' content='https://blog.lkwplus.com/p/amortized-analysis/'>
 <meta property='og:site_name' content='Li Kangwei'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Algorithm' /><meta property='article:tag' content='Math' /><meta property='article:published_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='og:image' content='https://blog.pkulkw.me/p/amortized-analysis/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Algorithm' /><meta property='article:tag' content='Math' /><meta property='article:published_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='og:image' content='https://blog.lkwplus.com/p/amortized-analysis/cover.jpg' />
 <meta name="twitter:site" content="@whoamamamiii">
     <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="算法学习笔记：摊还分析 Amortized Analysis">
 <meta name="twitter:description" content="摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
@@ -34,7 +34,7 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
  PUSH(S, x)：将对象 x 压入栈 S 中，时间 $O(1)$； POP(S)：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。  在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。
 MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
  每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.pkulkw.me/p/amortized-analysis/cover.jpg' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="twitter:image" content='https://blog.lkwplus.com/p/amortized-analysis/cover.jpg' /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -82,7 +82,7 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://blog.pkulkw.me/">Li Kangwei</a></h1>
+        <h1 class="site-name"><a href="https://blog.lkwplus.com/">Li Kangwei</a></h1>
         <h2 class="site-description">Think Different</h2>
     </header>
 
@@ -189,7 +189,7 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://blog.pkulkw.me/" class="back-home">
+        <a href="https://blog.lkwplus.com/" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />

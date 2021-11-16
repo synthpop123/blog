@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithm on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/tags/algorithm/</link>
+    <link>https://blog.lkwplus.com/tags/algorithm/</link>
     <description>Recent content in Algorithm on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 07 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 May 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.lkwplus.com/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>算法学习笔记：摊还分析 Amortized Analysis</title>
-      <link>https://blog.pkulkw.me/p/amortized-analysis/</link>
+      <link>https://blog.lkwplus.com/p/amortized-analysis/</link>
       <pubDate>Fri, 07 May 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/p/amortized-analysis/</guid>
+      <guid>https://blog.lkwplus.com/p/amortized-analysis/</guid>
       <description>摊还分析是一种分析一个操作序列中所执行的所有操作的平均时间分析方法。与一般的平均分析方法不同的是，它不涉及概率的分析，可以保证最坏情况下每个操作的平均性能。
 下面以带有额外 MULTIPOP 操作的栈的实例为例，分别对摊还分析中最常用的三种技术进行介绍。最后定义一种特殊的操作序列，并通过以上三种方法对其摊还代价进行分析。
 聚合分析 Aggregate Analysis 概念与定义 证明对所有 $n$，一个 $n$ 个操作的序列最坏情况下花费的总时间为 $T(n)$。因此，在最坏情况下，每个操作的平均代价（或摊还代价）为 $T(n)/n$。
@@ -25,10 +25,10 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
     
     <item>
       <title>论文笔记：Mathematical Analysis of Algorithms</title>
-      <link>https://blog.pkulkw.me/p/knuth-paper/</link>
+      <link>https://blog.lkwplus.com/p/knuth-paper/</link>
       <pubDate>Thu, 18 Mar 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/p/knuth-paper/</guid>
+      <guid>https://blog.lkwplus.com/p/knuth-paper/</guid>
       <description>&amp;ldquo;Mathematical Analysis of Algorithms&amp;rdquo; 由著名的计算机科学家 Donald Knuth 于 1971 年发表。
  这篇文章主要引入两个具体的算法问题来展现算法效率分析的典型方法。
  Rearranging data without using auxiliary memory space. 不使用额外的存储空间的排序算法（原地排序）。 Finding the element of rank $t$ when $n$ elements are ranked by some linear ordering relation. 在线性有序表中查找特定值。  Introduction 算法分析领域的核心目标是研究如何量化分析各个不同算法的好坏，主要的两类问题如下：

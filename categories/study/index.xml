@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Study on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/categories/study/</link>
+    <link>https://blog.lkwplus.com/categories/study/</link>
     <description>Recent content in Study on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 18 Mar 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.lkwplus.com/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>论文笔记：Mathematical Analysis of Algorithms</title>
-      <link>https://blog.pkulkw.me/p/knuth-paper/</link>
+      <link>https://blog.lkwplus.com/p/knuth-paper/</link>
       <pubDate>Thu, 18 Mar 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/p/knuth-paper/</guid>
+      <guid>https://blog.lkwplus.com/p/knuth-paper/</guid>
       <description>&amp;ldquo;Mathematical Analysis of Algorithms&amp;rdquo; 由著名的计算机科学家 Donald Knuth 于 1971 年发表。
  这篇文章主要引入两个具体的算法问题来展现算法效率分析的典型方法。
  Rearranging data without using auxiliary memory space. 不使用额外的存储空间的排序算法（原地排序）。 Finding the element of rank $t$ when $n$ elements are ranked by some linear ordering relation. 在线性有序表中查找特定值。  Introduction 算法分析领域的核心目标是研究如何量化分析各个不同算法的好坏，主要的两类问题如下：

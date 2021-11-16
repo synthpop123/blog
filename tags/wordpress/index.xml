@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WordPress on Li Kangwei</title>
-    <link>https://blog.pkulkw.me/tags/wordpress/</link>
+    <link>https://blog.lkwplus.com/tags/wordpress/</link>
     <description>Recent content in WordPress on Li Kangwei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Feb 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.pkulkw.me/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Feb 2021 09:00:00 +0800</lastBuildDate><atom:link href="https://blog.lkwplus.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub Pages &#43; Hugo：我的博客搭建之路</title>
-      <link>https://blog.pkulkw.me/p/myblog/</link>
+      <link>https://blog.lkwplus.com/p/myblog/</link>
       <pubDate>Mon, 08 Feb 2021 09:00:00 +0800</pubDate>
       
-      <guid>https://blog.pkulkw.me/p/myblog/</guid>
+      <guid>https://blog.lkwplus.com/p/myblog/</guid>
       <description>很早就有自己购买域名搭建一个个人博客网站的想法了，而真正开始将这个想法付诸行动是源于 GitHub Student Developer Pack 的成功申请。
 申请 GitHub 学生开发包 GitHub 学生开发包内包含众多权益，比如 Termius 的 Premium 版、GitHub 的 Pro 版会员、name.com 以及 namecheap.com 提供的免费域名 + SSL 证书、DigitalOcean 提供的 50 刀代金券。权益实在太多了，大家可以对照官方网址逐一研究。
  GitHub 学生开发包 
