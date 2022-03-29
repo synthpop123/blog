@@ -261,11 +261,11 @@ May 07, 2021&nbsp;&nbsp;&nbsp;&nbsp;
 <li><code>POP(S)</code>：将栈 S 的栈顶对象弹出，并返回该对象，时间 $O(1)$。</li>
 </ul>
 <p>在此基础上，增加一个新的栈操作 MULTIPOP，时间 $O(min(s, k))$。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">MULTIPOP</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-<span class="mi">1</span>  <span class="k">while</span> <span class="ow">not</span> <span class="n">STACK</span><span class="o">-</span><span class="n">EMPTY</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="mi">2</span>     <span class="n">POP</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
-<span class="mi">3</span>     <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span>
-</code></pre></div><h3 id="基本分析">基本分析</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">MULTIPOP</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span>  <span class="k">while</span> <span class="ow">not</span> <span class="n">STACK</span><span class="o">-</span><span class="n">EMPTY</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span>     <span class="n">POP</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span>     <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span></code></pre></div><h3 id="基本分析">基本分析</h3>
 <p>问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？</p>
 <ul>
 <li>每个操作都可能是 MULTIPOP；</li>
@@ -302,7 +302,7 @@ $$</p>
 <p>因此，每个操作的摊还代价等于其实际代价加上此操作引起的势能变化。则 n 个操作的总摊还代价为</p>
 <p>$$
 \begin{aligned}
-\sum_{i=1}^{n} \widehat{c}_{i} &amp;=\sum_{i=1}^{n}\left(c_{i}+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)\right) \\ &amp;=\sum_{i=1}^{n} c_{i}+\Phi\left(D_{n}\right)-\Phi\left(D_{0}\right)
+\sum_{i=1}^{n} \widehat{c}<em>{i} &amp;=\sum</em>{i=1}^{n}\left(c_{i}+\Phi\left(D_{i}\right)-\Phi\left(D_{i-1}\right)\right) \\ &amp;=\sum_{i=1}^{n} c_{i}+\Phi\left(D_{n}\right)-\Phi\left(D_{0}\right)
 \end{aligned}
 $$</p>
 <h3 id="通过势能法确定摊还代价">通过势能法确定摊还代价</h3>

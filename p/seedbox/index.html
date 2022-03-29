@@ -251,122 +251,122 @@ Oct 09, 2021&nbsp;&nbsp;&nbsp;&nbsp;
 </blockquote>
 <h2 id="安装系统并组建-raid-0">安装系统并组建 RAID 0</h2>
 <p>进入救援模式并一键安装系统（RAID 0），以 Debian 10 为例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> x <span class="p">|</span> installimage -p /boot:ext3:1G,/:ext4:all -l <span class="m">0</span> -r yes -i images/Debian-1010-buster-64-minimal.tar.gz  -a -n Hz <span class="o">&amp;&amp;</span> reboot
-</code></pre></div><h2 id="配置-bbr-与星大脚本">配置 BBR 与星大脚本</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">echo</span> x <span class="p">|</span> installimage -p /boot:ext3:1G,/:ext4:all -l <span class="m">0</span> -r yes -i images/Debian-1010-buster-64-minimal.tar.gz  -a -n Hz <span class="o">&amp;&amp;</span> reboot
+</span></span></code></pre></div><h2 id="配置-bbr-与星大脚本">配置 BBR 与星大脚本</h2>
 <p>运行 AccTCP 网络优化脚本，使用 BBR 替换服务器自身的 Cubic 拥塞控制算法。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">bash &lt;<span class="o">(</span>curl -Ls https://git.io/AccTCP<span class="o">)</span>
-</code></pre></div><p>可以运行另一个脚本查看更详细的系统信息（包括硬盘通电时间等）：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">bash &lt;<span class="o">(</span>curl -Ls https://git.io/ceshi<span class="o">)</span>
-</code></pre></div><p>接下来安装 <a class="link" href="https://github.com/Aniverse/inexistence"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bash &lt;<span class="o">(</span>curl -Ls https://git.io/AccTCP<span class="o">)</span>
+</span></span></code></pre></div><p>可以运行另一个脚本查看更详细的系统信息（包括硬盘通电时间等）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bash &lt;<span class="o">(</span>curl -Ls https://git.io/ceshi<span class="o">)</span>
+</span></span></code></pre></div><p>接下来安装 <a class="link" href="https://github.com/Aniverse/inexistence"  target="_blank" rel="noopener"
     >星大脚本</a>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">bash &lt;<span class="o">(</span>wget -qO- https://git.io/abcde<span class="o">)</span>
-</code></pre></div><p>个人习惯一般选择安装 Deluge 1.3.15 以及 Flexget，并选择进行 system tweaks，安装完成后会展示出各个客户端的 Web UI 网址并重启。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bash &lt;<span class="o">(</span>wget -qO- https://git.io/abcde<span class="o">)</span>
+</span></span></code></pre></div><p>个人习惯一般选择安装 Deluge 1.3.15 以及 Flexget，并选择进行 system tweaks，安装完成后会展示出各个客户端的 Web UI 网址并重启。</p>
 <h2 id="配置-flexget">配置 Flexget</h2>
 <p>新建文件夹 <code>.flexget</code> 并进入该目录下，同时新建配置文件 <code>config.yml</code>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir ~/.flexget
-vim ~/.flexget/config.yml
-</code></pre></div><p>除此之外，还需安装 <a class="link" href="https://github.com/Juszoe/flexget-nexusphp"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkdir ~/.flexget
+</span></span><span class="line"><span class="cl">vim ~/.flexget/config.yml
+</span></span></code></pre></div><p>除此之外，还需安装 <a class="link" href="https://github.com/Juszoe/flexget-nexusphp"  target="_blank" rel="noopener"
     >Flexget-Nexusphp</a> 插件，对 details.php 页面进行爬取，可以更好的判断种子的优惠信息。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir -p ~/.flexget/plugins
-<span class="nb">cd</span> ~/.flexget/plugins
-wget https://raw.githubusercontent.com/Juszoe/flexget-nexusphp/master/nexusphp.py
-</code></pre></div><p><code>config.yml</code> 基本配置文件如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">templates</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">standard</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">free_space</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw</span><span class="w">
-</span><span class="w">      </span><span class="nt">space</span><span class="p">:</span><span class="w"> </span><span class="m">10240</span><span class="w">
-</span><span class="w">    </span><span class="nt">seen</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">fields</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">url</span><span class="w">
-</span><span class="w">  </span><span class="nt">de</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">deluge</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/deluge/download/</span><span class="w">
-</span><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
-</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">58846</span><span class="w">
-</span><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
-</span><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
-</span><span class="w">  </span><span class="nt">qb</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">qbittorrent</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/qbittorrent/download/</span><span class="w">
-</span><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
-</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">2017</span><span class="w">
-</span><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
-</span><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
-</span><span class="w">  </span><span class="nt">tr</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">transmission</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/transmission/download/</span><span class="w">
-</span><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
-</span><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9099</span><span class="w">
-</span><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
-</span><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
-</span><span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">content_size</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="m">6000</span><span class="w">
-</span><span class="w">      </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="m">666666</span><span class="w">
-</span><span class="w">      </span><span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
-</span><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">CHDBits</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">nexusphp</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">cookie</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a=xxx; b=xxx&#39;</span><span class="w">
-</span><span class="w">      </span><span class="nt">discount</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">free</span><span class="w">
-</span><span class="w">        </span>- <span class="l">2xfree</span><span class="w">
-</span><span class="w">      </span><span class="nt">hr</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
-</span><span class="w">    </span><span class="nt">rss</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://chdbits.co/torrentrss.php?rows=10&amp;linktype=dl&amp;passkey=XXX</span><span class="w">
-</span><span class="w">      </span><span class="nt">other_fields</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">link]</span><span class="w">
-</span><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l">de</span><span class="w">
-</span><span class="w">  </span><span class="nt">UHDBits</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="nt">limit</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
-</span><span class="w">          </span><span class="nt">from</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">rss</span><span class="p">:</span><span class="w"> 
-</span><span class="w">              </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://uhdbits.org/rss.php?action=rss&amp;user=XXX&amp;passkey=XXX</span><span class="w">
-</span><span class="w">    </span><span class="nt">accept_all</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
-</span><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l">de</span><span class="w">
-</span><span class="w">      
-</span><span class="w"></span><span class="nt">web_server</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9566</span><span class="w">
-</span><span class="w">  </span><span class="nt">web_ui</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
-</span><span class="w"></span><span class="c"># base_url: /flexget</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># schedules is disabled by default, you need to enable it or use cron to RSS</span><span class="w">
-</span></code></pre></div><p>试运行一次查看效果：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">flexget --test execute
-</code></pre></div><h3 id="安装与配置-autoremove-torrents">安装与配置 Autoremove-torrents</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkdir -p ~/.flexget/plugins
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/.flexget/plugins
+</span></span><span class="line"><span class="cl">wget https://raw.githubusercontent.com/Juszoe/flexget-nexusphp/master/nexusphp.py
+</span></span></code></pre></div><p><code>config.yml</code> 基本配置文件如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">templates</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">standard</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">free_space</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">space</span><span class="p">:</span><span class="w"> </span><span class="m">10240</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">seen</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">fields</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">de</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">deluge</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/deluge/download/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">58846</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">qb</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">qbittorrent</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/qbittorrent/download/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">2017</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tr</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">transmission</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/home/likw/transmission/download/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">localhost</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9099</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">content_size</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="m">6000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="m">666666</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">CHDBits</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nexusphp</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">cookie</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a=xxx; b=xxx&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">discount</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">free</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">2xfree</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">hr</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">rss</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://chdbits.co/torrentrss.php?rows=10&amp;linktype=dl&amp;passkey=XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">other_fields</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">link]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l">de</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">UHDBits</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">limit</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">amount</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">from</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">rss</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://uhdbits.org/rss.php?action=rss&amp;user=XXX&amp;passkey=XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">accept_all</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l">de</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">web_server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9566</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web_ui</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># base_url: /flexget</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># schedules is disabled by default, you need to enable it or use cron to RSS</span><span class="w">
+</span></span></span></code></pre></div><p>试运行一次查看效果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">flexget --test execute
+</span></span></code></pre></div><h3 id="安装与配置-autoremove-torrents">安装与配置 Autoremove-torrents</h3>
 <p><a class="link" href="https://autoremove-torrents.readthedocs.io/zh_CN/latest/index.html"  target="_blank" rel="noopener"
     >中文文档</a>，首先直接从 pip 进行安装：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pip install autoremove-torrents
-</code></pre></div><p>接下来新建一个目录用于存放配置文件与运行日志，并进入该目录同时新建一个配置文件 <code>config.yml</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir -p ~/.config/art/artlogs
-vim ~/.config/art/config.yml
-</code></pre></div><p>基本配置文件如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">my_task</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w"> </span><span class="l">deluge</span><span class="w">
-</span><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="p">:</span><span class="m">58846</span><span class="w">
-</span><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
-</span><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
-</span><span class="w">  </span><span class="nt">strategies</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">sofast</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">Downloading</span><span class="w">
-</span><span class="w">      </span><span class="nt">remove</span><span class="p">:</span><span class="w"> </span><span class="l">(download_speed &gt; 40000 and upload_speed &lt; 2000) and size &lt; 5</span><span class="w">
-</span><span class="w">    </span><span class="nt">solong</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">remove</span><span class="p">:</span><span class="w"> </span><span class="l">(seeding_time &gt; 2400 and upload_speed &lt; 1500)</span><span class="w">
-</span><span class="w">  </span><span class="nt">delete_data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></code></pre></div><p>试运行一次查看效果：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">autoremove-torrents -v -c /root/.config/art/config.yml
-</code></pre></div><h2 id="设置定时任务让-flexget-和-art-完成自动刷流任务">设置定时任务让 Flexget 和 ART 完成自动刷流任务</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install autoremove-torrents
+</span></span></code></pre></div><p>接下来新建一个目录用于存放配置文件与运行日志，并进入该目录同时新建一个配置文件 <code>config.yml</code>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkdir -p ~/.config/art/artlogs
+</span></span><span class="line"><span class="cl">vim ~/.config/art/config.yml
+</span></span></code></pre></div><p>基本配置文件如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">my_task</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w"> </span><span class="l">deluge</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="p">:</span><span class="m">58846</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">likw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">XXX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">strategies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sofast</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">Downloading</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">remove</span><span class="p">:</span><span class="w"> </span><span class="l">(download_speed &gt; 40000 and upload_speed &lt; 2000) and size &lt; 5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">solong</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">remove</span><span class="p">:</span><span class="w"> </span><span class="l">(seeding_time &gt; 2400 and upload_speed &lt; 1500)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">delete_data</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>试运行一次查看效果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">autoremove-torrents -v -c /root/.config/art/config.yml
+</span></span></code></pre></div><h2 id="设置定时任务让-flexget-和-art-完成自动刷流任务">设置定时任务让 Flexget 和 ART 完成自动刷流任务</h2>
 <p>采用 <code>crontab</code> 完成定时任务：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">crontab -e
-</code></pre></div><p>基本配置如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 每十分钟进行一次自动删种任务</span>
-*/10 * * * * /usr/local/bin/autoremove-torrents -c /root/.config/art/config.yml -l /root/.config/art/artlogs
-<span class="c1"># 每两分钟获取一次 RSS 订阅并推送下载任务至 Deluge</span>
-*/2 * * * * /usr/local/bin/flexget --cron execute
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">crontab -e
+</span></span></code></pre></div><p>基本配置如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 每十分钟进行一次自动删种任务</span>
+</span></span><span class="line"><span class="cl">*/10 * * * * /usr/local/bin/autoremove-torrents -c /root/.config/art/config.yml -l /root/.config/art/artlogs
+</span></span><span class="line"><span class="cl"><span class="c1"># 每两分钟获取一次 RSS 订阅并推送下载任务至 Deluge</span>
+</span></span><span class="line"><span class="cl">*/2 * * * * /usr/local/bin/flexget --cron execute
+</span></span></code></pre></div>
 </section>
 
 

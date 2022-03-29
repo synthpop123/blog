@@ -377,15 +377,15 @@ Feb 08, 2021&nbsp;&nbsp;&nbsp;&nbsp;
 <p>接下来便可以配置自己的博客主题了，我选择的是 MemE 主题，主要是看重它的简洁大方，同时字体渲染还蛮好看。主题的官方页面如下：<a class="link" href="https://github.com/reuixiy/hugo-theme-meme"  target="_blank" rel="noopener"
     >https://github.com/reuixiy/hugo-theme-meme</a></p>
 <p>下一步便进行主题的安装：（假设 blog 是你创建的 site 的名称）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">~ $ <span class="nb">cd</span> blog
-~/blog $ git init
-~/blog $ git submodule add --depth <span class="m">1</span> https://github.com/reuixiy/hugo-theme-meme.git themes/meme
-</code></pre></div><p>同时，你也可以尝试新建文章的操作：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">~/blog $ hugo new <span class="s2">&#34;posts/hello-world.md&#34;</span>
-~/blog $ hugo new <span class="s2">&#34;about/_index.md&#34;</span>
-</code></pre></div><p>Hugo 提供了一种非常便捷的预览方式，输入命令</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">~/blog $ hugo server -D
-</code></pre></div><p>便可以在浏览器键入 <a class="link" href="http://localhost:1313/"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~ $ <span class="nb">cd</span> blog
+</span></span><span class="line"><span class="cl">~/blog $ git init
+</span></span><span class="line"><span class="cl">~/blog $ git submodule add --depth <span class="m">1</span> https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+</span></span></code></pre></div><p>同时，你也可以尝试新建文章的操作：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~/blog $ hugo new <span class="s2">&#34;posts/hello-world.md&#34;</span>
+</span></span><span class="line"><span class="cl">~/blog $ hugo new <span class="s2">&#34;about/_index.md&#34;</span>
+</span></span></code></pre></div><p>Hugo 提供了一种非常便捷的预览方式，输入命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">~/blog $ hugo server -D
+</span></span></code></pre></div><p>便可以在浏览器键入 <a class="link" href="http://localhost:1313/"  target="_blank" rel="noopener"
     >http://localhost:1313/</a> 而实现网站的实时预览。</p>
 <h2 id="自定义主题">自定义主题</h2>
 <p>Hugo 可以提供非常强大的主题自定义的能力，根据主题所提供的配置文件，我们可以不断丰富自己的网站的功能，也可以根据自己的喜好增添许多 CSS 样式来进行美化。</p>
@@ -409,13 +409,13 @@ Feb 08, 2021&nbsp;&nbsp;&nbsp;&nbsp;
 <li>在 GitHub 中创建一个名称为 username.github.io 的仓库（username 替换为你自己的用户名），同时其余选项均不勾选。</li>
 <li>在你的 Hugo 网站目录下键入命令 <code>hugo -v</code> 生成网站的相应文件，存储在 <code>public</code> 目录下。</li>
 <li>进入 <code>public</code> 目录下，并按照正常的 git 命令操作：
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">cd</span> public
-$ git init
-$ git remote add origin https://github.com/XXXX/XXXX.github.io.git
-$ git add -A
-$ git commit -m <span class="s2">&#34;first commit&#34;</span>
-$ git push -u origin master
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ <span class="nb">cd</span> public
+</span></span><span class="line"><span class="cl">$ git init
+</span></span><span class="line"><span class="cl">$ git remote add origin https://github.com/XXXX/XXXX.github.io.git
+</span></span><span class="line"><span class="cl">$ git add -A
+</span></span><span class="line"><span class="cl">$ git commit -m <span class="s2">&#34;first commit&#34;</span>
+</span></span><span class="line"><span class="cl">$ git push -u origin master
+</span></span></code></pre></div></li>
 <li>如果 git 操作正常没有报错，那么这时你便可以在你的 GitHub 仓库中看到相应的文件了。</li>
 </ol>
 <p>如果你需要使用自己的自定义域名来使你的 GiHub Pages 更为精致，那么你需要先到域名管理后台添加一条 CNAME 记录：</p>
@@ -446,12 +446,12 @@ $ git push -u origin master
 	</figure></p>
 <p>按照 GitHub 的提示，将自定义域名填入 Custom Domain 处，并勾选 Enforce HTTPS，等待一段时间使 DNS 记录生效后，便可以成功的访问自己的域名来进入博客了。</p>
 <p>若是之后对文章进行了更新，便可以使用 git push 来进行同步：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">cd</span> public
-$ git add .
-$ git status
-$ git commit -m <span class="s2">&#34;add posts&#34;</span>
-$ git push
-</code></pre></div><p>最终我的博客现在大概长下面这样：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ <span class="nb">cd</span> public
+</span></span><span class="line"><span class="cl">$ git add .
+</span></span><span class="line"><span class="cl">$ git status
+</span></span><span class="line"><span class="cl">$ git commit -m <span class="s2">&#34;add posts&#34;</span>
+</span></span><span class="line"><span class="cl">$ git push
+</span></span></code></pre></div><p>最终我的博客现在大概长下面这样：</p>
 <p><figure style="flex-grow: 85; flex-basis: 205px">
 		<a href="/p/myblog/blog_11.png" data-size="1069x1248"><img src="/p/myblog/blog_11.png"
 				srcset="/p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_480x0_resize_box_3.png 480w, /p/myblog/blog_11_hu69fa72ebbdc1baaedf8c519947fb4824_68646_1024x0_resize_box_3.png 1024w"
