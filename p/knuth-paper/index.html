@@ -355,10 +355,10 @@ $$</p>
 a=\sum_{1 \leqslant i&lt;j \leqslant n} y_{i j}
 $$</p>
 <p>具体地，在以上实例中，$(q(1),\cdots,q(9))=(5,6,9,3,7,2,1,8,4)$，此时代入公式可得 $(i,j)=(1,2),(1,3),(2,3),(4,5),(7,8),(7,9)$ 时 $y_{ij}=1$，其余情形下 $y_{ij}=0$。</p>
-<p>记 $y_{ij}$ 的平均值为 $\bar{y}<em>{ij}$，容易发现它便是所有 $n!$ 个排列中 $y</em>{ij}=1$ 的排列个数，我们有：</p>
+<p>记 $y_{ij}$ 的平均值为 $\overline y_{ij}$，容易发现它便是所有 $n!$ 个排列中 $y_{ij}=1$ 的排列个数，我们有：</p>
 <p>$$
 \begin{aligned}
-\bar{a}=\sum_{1 \leqslant i&lt;j \leqslant n} \bar{y}<em>{i j} &amp;=\sum</em>{1 \leqslant i&lt;j \leqslant n} \frac{1}{j-i+1} \\ &amp;=\sum_{2 \leqslant r \leqslant n} \frac{n+1-r}{r}
+\overline a=\sum_{1 \leqslant i&lt;j \leqslant n} \overline y_{i j} &amp;=\sum_{1 \leqslant i&lt;j \leqslant n} \frac{1}{j-i+1} \\ &amp;=\sum_{2 \leqslant r \leqslant n} \frac{n+1-r}{r}
 \end{aligned}
 $$</p>
 <p>记调和级数为 $H_n$，对上式进行展开：</p>
@@ -369,7 +369,7 @@ $$</p>
 <p>接下来我们对 a 的方差进行求解，我们需要计算下面式子的平均值：</p>
 <p>$$
 \begin{aligned}
-\left(\sum_{1 \leqslant i&lt;j \leqslant n} y_{i j}\right)^{2}=&amp;\sum_{1 \leqslant i&lt;j \leqslant n} y_{i j}^{2}+\sum_{\substack{1 \leqslant i&lt;j \leqslant n \\ 1 \leqslant k&lt;l \leqslant n \\ (i, j) \neq(k, l)}} y_{i j} y_{k l} \\ =&amp;\sum_{1 \leqslant i&lt;j \leqslant n} \bar{y}<em>{i j} +2 \sum</em>{1 \leqslant i&lt;j&lt;k&lt;l \leqslant n}\left(y_{i j} y_{k l}+y_{i k} y_{j l}+y_{i l} y_{j k}\right) \\ &amp; +2 \sum_{1 \leqslant i&lt;j&lt;k \leqslant n}\left(y_{i j} y_{j k}+y_{i k} y_{j k}+y_{i j} y_{i k}\right) \\ =&amp; \bar{a}+2(A+B+C+D+E+F)
+\left(\sum_{1 \leqslant i&lt;j \leqslant n} y_{i j}\right)^{2}=&amp;\sum_{1 \leqslant i&lt;j \leqslant n} y_{i j}^{2}+\sum_{\substack{1 \leqslant i&lt;j \leqslant n \\ 1 \leqslant k&lt;l \leqslant n \\ (i, j) \neq(k, l)}} y_{i j} y_{k l} \\ =&amp;\sum_{1 \leqslant i&lt;j \leqslant n} \overline y_{i j} +2 \sum_{1 \leqslant i&lt;j&lt;k&lt;l \leqslant n}\left(y_{i j} y_{k l}+y_{i k} y_{j l}+y_{i l} y_{j k}\right) \\ &amp; +2 \sum_{1 \leqslant i&lt;j&lt;k \leqslant n}\left(y_{i j} y_{j k}+y_{i k} y_{j k}+y_{i j} y_{i k}\right) \\ =&amp; \overline a+2(A+B+C+D+E+F)
 \end{aligned}
 $$</p>
 <p>接下来便是一系列繁杂的数学运算过程：</p>
