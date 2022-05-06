@@ -22,7 +22,7 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
 MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 基本分析 问题：以一个由 n 个 PUSH、POP、MULTIPOP 操作的序列作用于一个空栈 S，总运行时间？
  每个操作都可能是 MULTIPOP； 每个 MULTIPOP 的运行时间是 $O(\min(k, s)=O(n)$； 总的运行时间的上界为 $O(n^2)$。  虽然这个分析是正确的，但我们通过单独分析每个操作的最坏情况得到的总最坏情况时间 $O(n^2)$ 并不是一个确界。'>
 <meta property='og:url' content='https://blog.lkwplus.com/p/amortized-analysis/'>
-<meta property='og:site_name' content='Li Kangwei'>
+<meta property='og:site_name' content='Nameless'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Algorithm' /><meta property='article:tag' content='Math' /><meta property='article:published_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='article:modified_time' content='2021-05-07T09:00:00&#43;08:00'/><meta property='og:image' content='https://blog.lkwplus.com/p/amortized-analysis/cover.jpg' />
 <meta name="twitter:site" content="@whoamamamiii">
     <meta name="twitter:creator" content="@whoamamamiii"><meta name="twitter:title" content="算法学习笔记：摊还分析 Amortized Analysis">
@@ -82,7 +82,7 @@ MULTIPOP(S, k) 1 while not STACK-EMPTY(S) and k &amp;gt; 0 2 POP(S) 3 k = k - 1 
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://blog.lkwplus.com/">Li Kangwei</a></h1>
+        <h1 class="site-name"><a href="https://blog.lkwplus.com/">Nameless</a></h1>
         <h2 class="site-description">Think Different</h2>
     </header>
 
@@ -466,7 +466,7 @@ $$</p>
         
             2021 - 
         
-        2022 Li Kangwei
+        2022 ^ Nameless
     </section>
     
     <section class="powerby">
