@@ -370,7 +370,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;算法分析&#34;&gt;算法分析&lt;/h3&gt;
 &lt;p&gt;由&lt;strong&gt;基尔霍夫定律&lt;/strong&gt;，我们了解到所有进入某节点的电流的总和等于所有离开这节点的电流的总和，在这里，我们可以有效的衡量某部分程序的执行情况。具体地，判断 &lt;code&gt;k &amp;gt; j&lt;/code&gt; 的总次数等于 &lt;code&gt;k = p(j)&lt;/code&gt; 以及 &lt;code&gt;k = p(k)&lt;/code&gt; 的执行次数之和。&lt;/p&gt;
-&lt;p&gt;为了便于分析，在伪代码注释中标记出两个部分 a 和 b。而对于算法的正确性分析，算法的设计过程已清晰的展现，而要给出一个严谨的证明则十分麻烦，作者在此选择略繁琐的证明部分。&lt;/p&gt;
+&lt;p&gt;为了便于分析，在伪代码注释中标记出两个部分 a 和 b。而对于算法的正确性分析，算法的设计过程已清晰的展现，而要给出一个严谨的证明则十分麻烦，作者在此选择略去繁琐的证明部分。&lt;/p&gt;
 &lt;h3 id=&#34;极端情况&#34;&gt;极端情况&lt;/h3&gt;
 &lt;p&gt;若记当前环的长度为 n，易知当 $(p(1),p(2),\cdots,p(n))=(2,3,&amp;hellip;,n,1)$ 时即对应 a 的最坏情况，此时 $a=(n-1)+(n-2)+\dots+0$ 取到最大值 $\frac{1}{2}(n^2-n)$，值得注意的是，此时正好对应着 b 的最好情况。&lt;/p&gt;
 &lt;p&gt;而相类似的，当 $(p(1),p(2),\cdots,p(n))=(1,2,3,&amp;hellip;,n)$ 时即对应 b 的最坏情况，此时正好对应着 a 的最好情况。&lt;/p&gt;
